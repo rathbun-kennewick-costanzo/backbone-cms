@@ -21,29 +21,29 @@ require.config({
   },
 
   paths: {
-    jquery: '../bower_components/jquery/jquery',
-    backbone: '../bower_components/backbone-amd/backbone',
-    underscore: '../bower_components/underscore-amd/underscore',
+    jquery: '../lib/jquery/jquery',
+    backbone: '../lib/backbone-amd/backbone',
+    underscore: '../lib/underscore-amd/underscore',
 
     /* alias all marionette libs */
-    'backbone.marionette': '../bower_components/backbone.marionette/lib/core/amd/backbone.marionette',
-    'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
-    'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
+    'backbone.marionette': '../lib/backbone.marionette/lib/core/amd/backbone.marionette',
+    'backbone.wreqr': '../lib/backbone.wreqr/lib/amd/backbone.wreqr',
+    'backbone.babysitter': '../lib/backbone.babysitter/lib/amd/backbone.babysitter',
 
     /* alias the bootstrap js lib */
     bootstrap: 'vendor/bootstrap',
 
     /* Alias text.js for template loading and shortcut the templates dir to tmpl */
-    text: '../bower_components/requirejs-text/text',
+    text: '../lib/requirejs-text/text',
     tmpl: "../templates",
 
     /* handlebars from the require handlerbars plugin below */
-    handlebars: '../bower_components/require-handlebars-plugin/Handlebars',
+    handlebars: '../lib/require-handlebars-plugin/Handlebars',
 
     /* require handlebars plugin - Alex Sexton */
-    i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile',
-    json2: '../bower_components/require-handlebars-plugin/hbs/json2',
-    hbs: '../bower_components/require-handlebars-plugin/hbs'
+    i18nprecompile: '../lib/require-handlebars-plugin/hbs/i18nprecompile',
+    json2: '../lib/require-handlebars-plugin/hbs/json2',
+    hbs: '../lib/require-handlebars-plugin/hbs'
   },
 
   hbs: {
