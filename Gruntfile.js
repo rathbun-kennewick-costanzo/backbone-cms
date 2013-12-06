@@ -137,7 +137,7 @@ module.exports = function(grunt) {
         imagesDir: '<%= yeoman.app %>/images',
         javascriptsDir: '<%= yeoman.app %>/scripts',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: 'app/bower_components',
+        importPath: 'app/lib',
         relativeAssets: true
       },
       dist: {},
@@ -252,7 +252,7 @@ module.exports = function(grunt) {
             '*.{ico,txt}',
             '.htaccess',
             'images/{,*/}*.{webp,gif}',
-            'bower_components/requirejs/require.js'
+            'lib/requirejs/require.js'
           ]
         }]
       }
