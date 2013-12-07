@@ -1,0 +1,160 @@
+*, *:before, *:after {
+@include box-sizing(border-box);
+}
+
+html, body {
+    height: 100%;
+}
+.alert-container{
+    position: fixed;
+    z-index: 999999;
+    width: 100%;
+}
+.alert{
+    position: relative;
+    font-size: 4em;
+    &.fade.in{
+        opacity: 0.9;
+    }
+    .message{
+        font-family: $font-family-fairview;
+    }
+}
+
+.outer-wrap{
+    min-height: 100%;
+}
+
+.inner-wrap{
+    padding: 0 10px 120px 10px; // bottom needs to be bigger than footer height
+    margin: 0 0 20px 0;
+    overflow:auto;
+    
+    @media (min-width: $screen-md-min) {
+        padding: 0 30px 140px 30px; // bottom needs to be bigger than footer height
+    }
+}
+
+.header{
+    background: url('../img/purple-background.png');
+    .navbar{
+        color: none;
+    }
+    .navbar-brand{
+        height: 80px;
+    }
+
+    .logo{
+        height: 100%;
+        padding-right: 20px;
+    }
+}
+
+footer{
+    margin-top: -140px; // negative value of footer height
+    height: 120px;
+    padding: 20px 10px 0 10px;
+    color: $color-two;
+    background: url('../img/salmon-background.png');
+    position: relative;
+    clear:both;
+    .copyright{
+        text-align: center;
+        img{
+            margin: 5px auto;
+            width: 30px;
+        }
+        a{
+            color: $color-two;
+        }
+    }
+}
+.popover-title{
+    color: white;
+    background: $color-six;
+    font-size: 1.5em;
+    letter-spacing: 0.04em;
+}
+.overview-left, .overview-right{
+    h1{
+        font-size: 2em;
+    }
+}
+.overview-content-left{
+    min-height: 500px;
+    max-height: 900px;
+    overflow-y: scroll;
+    background: white;
+    border-top: 10px solid $color-six;
+    border-bottom: 10px solid $color-six;
+    @include border-radius($border-radius-base);
+    h1{
+        padding: 0 0 0 10px;
+    }
+    .overview-card{
+        position: relative;
+        padding: 5px 10px;
+        min-height: 115px;
+        border-bottom: 4px solid $color-six;
+        @include transition(background 0.3s ease-in-out);
+        &:hover{
+            background: $color-six-t2;
+        }
+        h2{
+            padding: 0;
+            margin: 0;
+            font-size: 2em;
+        }
+    }
+    .draft{
+        font-size: 2em;
+        font-weight: bold;
+        opacity: 0.7;
+        position: absolute;
+        right: 5px;
+        top: 35px;
+        @include rotate(-45deg);
+    }
+}
+.overview-content-right{
+    position: relative;
+    min-height: 500px;
+    max-height: 900px;
+    overflow-y: scroll;
+    background: white;
+    padding: 5px 0 10px 0;
+    border-top: 10px solid $color-six;
+    border-bottom: 10px solid $color-six;
+    @include border-radius($border-radius-base);
+    h1{
+        padding: 0 0 0 10px;
+    }
+    a.edit{
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 2em;
+    }
+    .overview-full{
+        padding: 0 10px;
+    }
+}
+
+.users-card{
+    .users-image img{
+        display: block;
+        width: 100%;
+        margin: 40px 0 0 0;
+    }
+}
+
+.settings-right{
+    .settings-social-inputs{
+        input{
+            display: hidden;
+        }
+    }
+    .settings-save{
+        width: 50%;
+    }
+}

@@ -1,0 +1,60 @@
+.admin-input-title{
+	font-family: $font-family-fairview;
+	font-size: 40px;
+	letter-spacing: 0.04em;
+	height: 60px;
+	margin: 0 0 15px 0;
+}
+
+.admin-textarea{
+	font-family: $font-family-fairview;
+	font-size: 20px;
+	letter-spacing: 0.04em;
+	margin: 0 0 15px 0;
+}
+
+.admin-input{
+	font-family: $font-family-fairview;
+	font-size: 20px;
+	letter-spacing: 0.04em;
+	margin: 0 0 15px 0;
+}
+
+.markdown-description{
+	position: relative;
+	.markdown-description-btn{
+		position: absolute;
+		top: 10px;
+		right: 30px;
+		font-size: 1.5em;
+	}
+}
+.add-img-btn-container{
+	margin: 0 0 15px 0;
+	.add-img-btn{
+		width: 100%;
+	}
+}
+.file-upload{
+	position: relative;
+	i{
+		position: absolute;
+		top: 5px;
+		right: 30px;
+		font-size: 3em;
+	}
+	&.fadein-input{
+		display: none;
+	}
+}
+.publish-btns{
+	.btn{
+		width: 50%;
+	}
+}
+.entry-body-html{
+	font-family: $font-family-sans-serif;
+	h1, h2, h3, h4, h5{
+		font-family: $font-family-sans-serif;
+	}
+}

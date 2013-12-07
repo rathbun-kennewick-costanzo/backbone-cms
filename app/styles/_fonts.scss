@@ -1,0 +1,42 @@
+$fontFileName: "../fonts/fairview_regular-webfont";
+$fontName: "fairviewregular";
+
+@font-face { 
+  font-family: $fontName;
+  src: url('#{$fontFileName}.eot');
+  src: url('#{$fontFileName}.eot?#iefix') format('embedded-opentype'),
+       url('#{$fontFileName}.woff') format('woff'),
+       url('#{$fontFileName}.ttf') format('truetype'),
+       url('#{$fontFileName}.svg##{$fontName}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+$fontFileName2: "../fonts/fairviewsmallcaps-webfont";
+$fontName2: "fairviewsmallcaps";
+
+@font-face { 
+  font-family: $fontName2;
+  src: url('#{$fontFileName2}.eot');
+  src: url('#{$fontFileName2}.eot?#iefix') format('embedded-opentype'),
+       url('#{$fontFileName2}.woff') format('woff'),
+       url('#{$fontFileName2}.ttf') format('truetype'),
+       url('#{$fontFileName2}.svg##{$fontName}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$fontFileName3: "../fonts/satellite-webfont";
+$fontName3: "satellite";
+
+@font-face { 
+  font-family: $fontName3;
+  src: url('#{$fontFileName3}.eot');
+  src: url('#{$fontFileName3}.eot?#iefix') format('embedded-opentype'),
+       url('#{$fontFileName3}.woff') format('woff'),
+       url('#{$fontFileName3}.ttf') format('truetype'),
+       url('#{$fontFileName3}.svg##{$fontName}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,115 @@
+// Brand colors
+// -------------------------
+
+$brand-primary:         $color-two;
+$brand-success:         $color-three;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+$brand-info:            $color-five;
+
+// Scaffolding
+// -------------------------
+
+$body-bg:               $color-two;
+$text-color:            $color-one;
+
+// Links
+// -------------------------
+
+$link-color:            $color-seven;
+$link-hover-color:      lighten($link-color, 15%);
+
+// Buttons
+// -------------------------
+
+
+// $btn-default-color:              #333 !default;
+// $btn-default-bg:                 #fff !default;
+// $btn-default-border:             #ccc !default;
+
+$btn-primary-color:              $color-two;
+$btn-primary-bg:                 $color-seven;
+$btn-primary-border:             $btn-primary-bg;
+
+$btn-success-color:              $color-two;
+$btn-success-bg:                 $brand-success;
+$btn-success-border:             $btn-success-bg;
+
+$btn-warning-color:              $color-two;
+$btn-warning-bg:                 $brand-warning !default;
+$btn-warning-border:             $btn-warning-bg;
+
+$btn-danger-color:               $color-two;
+$btn-danger-bg:                  $brand-danger !default;
+$btn-danger-border:              $btn-danger-bg;
+
+$btn-info-color:                 $color-two;
+$btn-info-bg:                    $brand-info;
+$btn-info-border:                $btn-info-bg;
+
+// Typography
+// -------------------------
+$font-size-base:          14px !default;
+
+$font-size-h1:            floor($font-size-base * 3.6);
+$font-size-h2:            floor($font-size-base * 3.15);
+$font-size-h3:            ceil($font-size-base * 2.7);
+$font-size-h4:            ceil($font-size-base * 2.25);
+$font-size-h5:            ceil($font-size-base * 2);
+$font-size-h6:            ceil($font-size-base * 1.85);
+
+$line-height-base:        1.428571429 !default; // 20/14
+$line-height-computed:    floor($font-size-base * $line-height-base) !default; // ~20px
+
+$headings-font-family:    $font-family-fairview;
+
+
+
+// List group
+// -------------------------
+
+$list-group-hover-bg:         #f5f5f5 !default;
+$list-group-active-color:     $color-two;
+$list-group-active-bg:        $color-six;
+$list-group-active-border:    $color-six;
+
+$list-group-link-color:          #555 !default;
+$list-group-link-heading-color:  $color-six;
+
+// Panels
+// -------------------------
+
+$panel-primary-text:          $color-two;
+$panel-primary-border:        $color-six;
+$panel-primary-heading-bg:    $color-six;
+
+
+// Basics of a navbar
+$navbar-height:                    80px;
+$navbar-margin-bottom:             $line-height-computed !default;
+$navbar-border-radius:             $border-radius-base !default;
+$navbar-padding-horizontal:        floor($grid-gutter-width / 2) !default;
+$navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
+
+$navbar-default-color:             $color-two;
+$navbar-default-bg:                none;
+$navbar-default-border:            none;
+
+// Navbar links
+$navbar-default-link-color:                $color-two;
+$navbar-default-link-hover-color:          darken($color-two, 10%);
+$navbar-default-link-hover-bg:             transparent !default;
+$navbar-default-link-active-color:         $color-two;
+$navbar-default-link-active-bg:            $color-six-t4;
+$navbar-default-link-disabled-color:       #ccc !default;
+$navbar-default-link-disabled-bg:          transparent !default;
+
+// Navbar brand label
+$navbar-default-brand-color:               $navbar-default-link-color !default;
+$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default;
+$navbar-default-brand-hover-bg:            transparent !default;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg:           none;
+$navbar-default-toggle-icon-bar-bg:        $color-two;
+$navbar-default-toggle-border-color:       #ddd !default;
