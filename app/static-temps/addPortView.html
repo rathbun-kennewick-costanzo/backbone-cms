@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add Portfolio Item View</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/modernizr/modernizr.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="../lib/sass-bootstrap/js/alert.js"></script>
+    <script src="../lib/sass-bootstrap/js/button.js"></script>
+    <script src="../lib/sass-bootstrap/js/collapse.js"></script>
+    <script src="../lib/sass-bootstrap/js/dropdown.js"></script>
+    <script src="../lib/sass-bootstrap/js/modal.js"></script>
+    <script src="../lib/sass-bootstrap/js/tooltip.js"></script>
+    <script src="../lib/sass-bootstrap/js/popover.js"></script>
+    <!-- Tagit -->
+    <script src="../scripts/vendor/bootstrap-tagsinput.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <div class="outer-wrap">
+      <header class="header">
+        <nav class="navbar navbar-default" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+            <img src="/img/vertebra-logo.png" alt="Vertebra CMS Logo" class="img-responsive logo">
+            </a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="#"><i class="fa fa-external-link-square"></i></a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-picture-o"></i> Portfolio <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="fa fa-bars"></i> All</a></li>
+                  <li><a href="#"><i class="fa fa-plus"></i> New</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                  <li><a href="#"><i class="fa fa-user"></i> Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      
+      <div class="inner-wrap row">
+        <form id="portfolioEntry">
+          <div class="col-md-12">
+            <input type="text" class="form-control admin-input-title" placeholder="Title">
+          </div>
+          <div class="col-md-6 markdown-description">
+            <textarea class="form-control admin-textarea" rows="15" placeholder="Project Description"></textarea>
+            <a href="#" class="markdown-description-btn" data-toggle="popover"><i class="fa fa-info-circle"></i></a>
+          </div>
+          <div class="col-md-6">
+            <textarea class="form-control admin-textarea" rows="15" placeholder="Project Description"></textarea>
+          </div>
+          <div class="col-md-6">
+            <h2>Portfolio Images</h2>
+            <div class="file-upload">
+              <div class="col-md-6">
+                <input type="text" class="form-control admin-input input-lg" placeholder="Main Image Location">
+                <a href="#"><i class="fa fa-cloud-upload file-upload-icon"></i></a>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control admin-input input-lg" placeholder="Image Alt Text">
+              </div>
+            </div>
+            <!-- upload more images populate here -->
+            <div class="new-image-upload"></div>
+            <div class="col-md-12">
+              <a type="button" class="btn btn-success add-img-btn">Add another image <i class="fa fa-plus-circle"></i></a>
+              <a type="button" class="btn btn-danger remove-img-btn">Remove image <i class="fa fa-minus-circle"></i></a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2>Meta Data</h2>
+            <input type="text" class="form-control admin-input input-lg" placeholder="Page Title">
+            <input type="text" class="form-control admin-input input-lg" placeholder="Meta Description">
+            <input type="text" class="form-control admin-input input-lg" placeholder="Url Path">
+            <input type="text" class="form-control admin-input input-lg" placeholder="Tags" data-role="tagsinput">
+          </div>
+          <div class="col-md-12 btn-group publish-btns">
+            <a type="button" class="btn btn-primary btn-lg save-draft"><i class="fa fa-floppy-o"></i> Save Draft</a>
+            <a type="button" class="btn btn-success btn-lg publish"><i class="fa fa-arrow-up"></i> Publish</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <div class="col-md-12 copyright">
+        <img src="/img/icon-logo-vertebra.png" alt="Vertebra CMS Icon Logo" class="img-responsive logo">
+        <p>
+        Copyright © <script type="text/javascript"> document.write(new Date().getFullYear());</script>  Vertebra <br>
+        <a href="http://www.walkingfishstudios.com">Walking Fish Studios</a>
+        </p>
+      </div>
+    </footer>
+    
+    <script>
+    $(function (){
+    var markdownInfoBtn = $(".markdown-description-btn");
+    markdownInfoBtn.popover({
+    placement: 'left',
+    html: true,
+    title: 'Markdown Commands',
+    content: 'List of commands for Markdown'
+    });
+    // Prevents scroll to top on the button
+    markdownInfoBtn.on('click', function(e) {
+    e.preventDefault();
+    return true;
+    });
+    // Allows your to click anywhere on the screen to close popover
+    $('body').on('click', function (e) {
+    $('.markdown-description-btn').each(function () {
+    if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+    $(this).popover('hide');
+    }
+    });
+    })
+    // Add / remove new Image upload field
+    $('.remove-img-btn').hide();
+    $('.add-img-btn').on('click', function(){
+    $('.new-image-upload').append('<div class="file-upload"><div class="col-md-6"><input type="text" class="form-control admin-input input-lg" placeholder="Main Image Location"><a href="#"><i class="fa fa-cloud-upload file-upload-icon"></i></a></div><div class="col-md-6"><input type="text" class="form-control admin-input input-lg" placeholder="Image Alt Text"></div>');
+    $('.fadein-input').fadeIn(400);
+    if ($('.new-image-upload').html().length > 0) {
+    $('.remove-img-btn').fadeIn();
+    }
+    })
+    // Remove new Image upload field
+    $('.remove-img-btn').on('click', function(){
+    $('.new-image-upload .file-upload:last').fadeOut(400, function(){
+    $(this).detach();
+    if ($('.new-image-upload').html().length == 0) {
+    $('.remove-img-btn').fadeOut();
+    }
+    })
+    })
+    });
+    </script>
+  </body>
+</html>
