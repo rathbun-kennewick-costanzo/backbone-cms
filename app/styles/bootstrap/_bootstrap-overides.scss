@@ -100,7 +100,7 @@ $navbar-default-link-color:                $color-two;
 $navbar-default-link-hover-color:          darken($color-two, 10%);
 $navbar-default-link-hover-bg:             transparent !default;
 $navbar-default-link-active-color:         $color-two;
-$navbar-default-link-active-bg:            $color-six-t4;
+$navbar-default-link-active-bg:            darken($color-six, 10%);
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 

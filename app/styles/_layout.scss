@@ -36,7 +36,7 @@ html, body {
 }
 
 .header{
-    background: url('../img/purple-background.png');
+    background: $color-six;
     .navbar{
         color: none;
     }
@@ -55,7 +55,7 @@ footer{
     height: 120px;
     padding: 20px 10px 0 10px;
     color: $color-two;
-    background: url('../img/salmon-background.png');
+    background: $color-six;
     position: relative;
     clear:both;
     .copyright{
