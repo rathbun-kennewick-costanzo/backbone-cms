@@ -1,3 +1,9 @@
+.remove-left-padding{
+	padding-left: 0px;
+}
+.form-control[disabled]{
+	background-color: transparent;
+}
 .admin-input-title{
 	//font-family: $font-family-fairview;
 	font-size: 40px;

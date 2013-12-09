@@ -47,6 +47,14 @@ $btn-info-color:                 $color-two;
 $btn-info-bg:                    $brand-info;
 $btn-info-border:                $btn-info-bg;
 
+// Forms
+// -------------------------
+
+$input-color:                    $gray !default;
+$input-border:                   #ccc !default;
+$input-border-radius:            $border-radius-base !default;
+$input-border-focus:             $color-three;
+
 // Typography
 // -------------------------
 $font-size-base:          14px !default;
