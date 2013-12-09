@@ -1,23 +1,29 @@
 .admin-input-title{
-	font-family: $font-family-fairview;
+	//font-family: $font-family-fairview;
 	font-size: 40px;
 	letter-spacing: 0.04em;
 	height: 60px;
 	margin: 0 0 15px 0;
+	background: transparent;
+	border: 4px solid $color-six-t4;
 }
 
 .admin-textarea{
-	font-family: $font-family-fairview;
+	//font-family: $font-family-fairview;
 	font-size: 20px;
 	letter-spacing: 0.04em;
 	margin: 0 0 15px 0;
+	background: transparent;
+	border: 4px solid $color-six-t4;
 }
 
 .admin-input{
-	font-family: $font-family-fairview;
+	//font-family: $font-family-fairview;
 	font-size: 20px;
 	letter-spacing: 0.04em;
 	margin: 0 0 15px 0;
+	background: transparent;
+	border: 4px solid $color-six-t4;
 }
 
 .markdown-description{

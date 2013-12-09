@@ -3,158 +3,133 @@
 }
 
 html, body {
-    height: 100%;
+  height: 100%;
 }
 .alert-container{
-    position: fixed;
-    z-index: 999999;
-    width: 100%;
+  position: fixed;
+  z-index: 999999;
+  width: 100%;
 }
 .alert{
-    position: relative;
-    font-size: 4em;
-    &.fade.in{
-        opacity: 0.9;
-    }
-    .message{
-        font-family: $font-family-fairview;
-    }
+  position: relative;
+  font-size: 4em;
+  &.fade.in{
+    opacity: 0.9;
+  }
+  .message{
+    font-family: $font-family-fairview;
+  }
 }
 
 .outer-wrap{
-    min-height: 100%;
+  min-height: 100%;
 }
 
 .inner-wrap{
-    padding: 0 10px 120px 10px; // bottom needs to be bigger than footer height
-    margin: 0 0 20px 0;
-    overflow:auto;
-    
-    @media (min-width: $screen-md-min) {
-        padding: 0 30px 140px 30px; // bottom needs to be bigger than footer height
-    }
+  padding: 0 10px 120px 10px; // bottom needs to be bigger than footer height
+  margin: 0 0 20px 0;
+  overflow:auto;
+  
+  @media (min-width: $screen-md-min) {
+    padding: 0 30px 140px 30px; // bottom needs to be bigger than footer height
+  }
 }
 
 .header{
-    background: $color-six;
-    .navbar{
-        color: none;
-    }
-    .navbar-brand{
-        height: 80px;
-    }
+  background: $color-six;
+  .navbar{
+    color: none;
+  }
+  .navbar-brand{
+    height: 80px;
+  }
 
-    .logo{
-        height: 100%;
-        padding-right: 20px;
-    }
+  .logo{
+    height: 100%;
+    padding-right: 20px;
+  }
 }
 
 footer{
-    margin-top: -140px; // negative value of footer height
-    height: 120px;
-    padding: 20px 10px 0 10px;
-    color: $color-two;
-    background: $color-six;
-    position: relative;
-    clear:both;
-    .copyright{
-        text-align: center;
-        img{
-            margin: 5px auto;
-            width: 30px;
-        }
-        a{
-            color: $color-two;
-        }
+  margin-top: -140px; // negative value of footer height
+  height: 120px;
+  padding: 20px 10px 0 10px;
+  color: $color-two;
+  background: $color-six;
+  position: relative;
+  clear:both;
+  .copyright{
+    text-align: center;
+    img{
+        margin: 5px auto;
+        width: 30px;
     }
+    a{
+        color: $color-two;
+    }
+  }
 }
 .popover-title{
-    color: white;
-    background: $color-six;
-    font-size: 1.5em;
-    letter-spacing: 0.04em;
+  color: white;
+  background: $color-six;
+  font-size: 1.5em;
+  letter-spacing: 0.04em;
 }
-.overview-left, .overview-right{
-    h1{
-        font-size: 2em;
+.overview-content{
+  padding: 4px;
+  border: 4px solid $color-six-t4;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  position: relative;
+  &:hover{
+    @media (min-width: $screen-md-min){
+      @include transition(all 0.3s ease-in-out);
+      border-color: $color-seven;
     }
-}
-.overview-content-left{
-    min-height: 500px;
-    max-height: 900px;
-    overflow-y: scroll;
-    background: white;
-    border-top: 10px solid $color-six;
-    border-bottom: 10px solid $color-six;
-    @include border-radius($border-radius-base);
-    h1{
-        padding: 0 0 0 10px;
-    }
-    .overview-card{
-        position: relative;
-        padding: 5px 10px;
-        min-height: 115px;
-        border-bottom: 4px solid $color-six;
-        @include transition(background 0.3s ease-in-out);
-        &:hover{
-            background: $color-six-t2;
-        }
-        h2{
-            padding: 0;
-            margin: 0;
-            font-size: 2em;
-        }
-    }
-    .draft{
-        font-size: 2em;
-        font-weight: bold;
-        opacity: 0.7;
-        position: absolute;
-        right: 5px;
-        top: 35px;
-        @include rotate(-45deg);
-    }
-}
-.overview-content-right{
-    position: relative;
-    min-height: 500px;
-    max-height: 900px;
-    overflow-y: scroll;
-    background: white;
-    padding: 5px 0 10px 0;
-    border-top: 10px solid $color-six;
-    border-bottom: 10px solid $color-six;
-    @include border-radius($border-radius-base);
-    h1{
-        padding: 0 0 0 10px;
-    }
-    a.edit{
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        font-size: 2em;
-    }
-    .overview-full{
-        padding: 0 10px;
-    }
+  }
+  h2{
+    font-family: $font-family-helvetica;
+    font-size: 2em;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+  }
+  .btn-group{
+      width: 100%;
+      .btn{
+        width: 50%;
+        border-radius: 0px;
+      }
+  }
+  .overview-draft{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: $color-eight;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: $color-two;
+  }  
 }
 
 .users-card{
-    .users-image img{
-        display: block;
-        width: 100%;
-        margin: 40px 0 0 0;
-    }
+  .users-image img{
+    display: block;
+    width: 100%;
+    margin: 40px 0 0 0;
+  }
 }
 
 .settings-right{
-    .settings-social-inputs{
-        input{
-            display: hidden;
-        }
-    }
-    .settings-save{
-        width: 50%;
-    }
+  .settings-social-inputs{
+      input{
+        display: hidden;
+      }
+  }
+  .settings-save{
+    width: 50%;
+  }
 }

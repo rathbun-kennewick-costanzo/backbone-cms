@@ -36,13 +36,11 @@
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+              <span class="sr-only">Toggle navigation</span>
+              <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="#">
-            <img src="/img/vertebra-logo.png" alt="Vertebra CMS Logo" class="img-responsive logo">
+              <img src="/img/vertebra-logo.png" alt="Vertebra CMS Logo" class="img-responsive logo">
             </a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,6 +49,20 @@
               <li><a href="#"><i class="fa fa-external-link-square"></i></a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-picture-o"></i> Portfolio <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="fa fa-bars"></i> All</a></li>
+                  <li><a href="#"><i class="fa fa-plus"></i> New</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-align-left"></i> Blog <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="fa fa-bars"></i> All</a></li>
+                  <li><a href="#"><i class="fa fa-plus"></i> New</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Staff <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#"><i class="fa fa-bars"></i> All</a></li>
                   <li><a href="#"><i class="fa fa-plus"></i> New</a></li>
@@ -71,28 +83,30 @@
       </header>
       
       <div class="inner-wrap">
-        <div class="col-md-4 overview-left">
+        <div class="col-md-12">
           <h1>Portfolio Projects</h1>
-          <div class="overview-content-left">
-            <article class="overview-card">
-            <h2>Put a bird on it!</h2>
-            <p>Fingerstache Truffaut beard, plaid keytar twee Carles. Artisan actually drinking vinegar hoodie pour-over Tonx. Cornhole fixie sustainable food truck art party American Apparel.</p>
-            <a href="#" type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil-square-o"></i> edit</a>
-            <a href="#" type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> delete</a>
-            </article>
-            <article class="overview-card">
-            <h2>Small Batch Cardigan Leggings</h2>
-            <p>Vegan pickled Portland bicycle rights, viral bespoke Banksy Bushwick pour-over gentrify put a bird on it meggings roof party XOXO semiotics.</p>
-            <a href="#" type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil-square-o"></i> edit</a>
-            <a href="#" type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> delete</a>
-            </article>
-          </div>
-        </div>
-        <div class="col-md-8 overview-right">
-          <h1>Overview</h1>
-          <div class="overview-content-right">
-            <a href="#" class="edit"><i class="fa fa-pencil-square-o"></i></a>
-          </div>
+          <article class="col-md-4 overview-container">
+            <div class="overview-content">
+              <h2>Put a bird on it!</h2>
+              <p>Fingerstache Truffaut beard, plaid keytar twee Carles. Artisan actually drinking vinegar hoodie pour-over Tonx. Cornhole fixie sustainable food truck art party American Apparel...</p>
+              <div class="btn-group">
+                <a href="#" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> edit</a>
+                <a href="#" type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i> delete</a>
+              </div>
+            </div>
+          </article>
+          <article class="col-md-4 overview-container">
+            <div class="overview-content">
+              <h2>Small Batch Cardigan Leggings</h2>
+              <p>Fingerstache Truffaut beard, plaid keytar twee Carles. Artisan actually drinking vinegar hoodie pour-over Tonx. Cornhole fixie sustainable food truck art party American Apparel...</p>
+              <div class="btn-group">
+                <a href="#" type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> edit</a>
+                <a href="#" type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i> delete</a>
+              </div>
+              <span class="overview-draft">Draft</span>
+            </div>
+          </article>
+
         </div>
       </div>
     </div>
