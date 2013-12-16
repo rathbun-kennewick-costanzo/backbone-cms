@@ -50,8 +50,8 @@ exports.signout = function(req, res) {
  * Session
  */
 exports.session = function(req, res) {
-  res.redirect('/');
-  //res.redirect(path.join(__dirname, '../../app/static-temps/signedin.html'));
+  //res.redirect('/');
+  res.sendfile(path.join(__dirname, '../../app/static-temps/signedin.html'));
 };
 
 /**

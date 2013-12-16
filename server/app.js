@@ -37,6 +37,8 @@ dbConnection.once('open', function callback() {
   };
   walk(models_path);
 
+  console.log("GOOGLE IS " + JSON.stringify(config.get('google')));
+
   //passport
   require('./auth/passport')(passport);
 
