@@ -5,3 +5,5 @@ dist
 app/lib
 .tmp/
 .DS_Store
+server/config/*.json
+!server/config/defaults.json

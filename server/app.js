@@ -1,34 +1,56 @@
 'use strict';
 
-var express = require('express');
-var http = require('http');
-var path = require('path');
-var async = require('async');
-var hbs = require('express-hbs');
+var express = require('express'),
+  http = require('http'),
+  path = require('path'),
+  async = require('async'),
+  hbs = require('express-hbs'),
+  passport = require('passport'),
+  mongoose = require('mongoose'),
+  fs = require('fs');
 
-
-var mongoose = require('mongoose');
-
+//load configuration
+var config = require('./config');
 
 // start mongoose
-mongoose.connect('mongodb://localhost/sit');
-var db = mongoose.connection;
+var db = mongoose.connect(config.get('db'));
+var dbConnection = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback() {
+dbConnection.on('error', console.error.bind(console, 'connection error:'));
+dbConnection.once('open', function callback() {
 
-  /* test schema */
-  var testSchema = new mongoose.Schema({
-    test: String
-  });
+  //Bootstrap models
+  var models_path = __dirname + '/models';
+  var walk = function(path) {
+    fs.readdirSync(path).forEach(function(file) {
+      var newPath = path + '/' + file;
+      var stat = fs.statSync(newPath);
+      if (stat.isFile()) {
+        if (/(.*)\.(js|coffee)/.test(file)) {
+          require(newPath);
+        }
+      }
+      else if (stat.isDirectory()) {
+        walk(newPath);
+      }
+    });
+  };
+  walk(models_path);
 
-  var Test = mongoose.model('test', testSchema);
+  //passport
+  require('./auth/passport')(passport);
 
   var app = express();
 
-  app.configure(function() {
-    app.set('port', 9000);
+  //configure express
+  require('./express.js')(app, passport, db);
 
+
+  //configure routes
+  require('./routes/routes.js')(app, passport);
+  /*
+  app.configure(function() {
+    app.set('port', config.get('PORT'));
     app.set('view engine', 'handlebars');
     app.set('views', __dirname + '../app/scripts/views');
   });
@@ -42,7 +64,7 @@ db.once('open', function callback() {
   // mount static
   app.use(express.static(path.join(__dirname, '../app')));
   app.use(express.static(path.join(__dirname, '../.tmp')));
-
+*/
 
   // route index.html
   app.get('/', function(req, res) {
