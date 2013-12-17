@@ -36,7 +36,7 @@ var PortfolioSchema = new Schema({
     required: true,
     unique: true
   },
-  sortTags: Array,
+  sortTags: [String],
   date: {
     type: Date,
     required: true
