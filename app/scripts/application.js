@@ -1,26 +1,26 @@
 define([
     'backbone',
     'communicator',
-    'hbs!tmpl/welcome'
+    'hbs!tmpl/welcome',
+    'routers/router'
   ],
 
-  function(Backbone, Communicator, Welcome_tmpl) {
+  function(Backbone, Communicator, Welcome_tmpl, Router) {
     'use strict';
 
     var welcomeTmpl = Welcome_tmpl;
 
-    var App = new Backbone.Marionette.Application();
+    var App = window.App = new Backbone.Marionette.Application();
 
     /* Add application regions here */
-    App.addRegions({});
+    App.addRegions({
+      content: "#content"
+    });
 
     /* Add initializers here */
     App.addInitializer(function() {
-      document.body.innerHTML = welcomeTmpl({
-        success: "CONGRATS!"
-      });
+      Backbone.history.start();
       Communicator.mediator.trigger("APP:START");
     });
-    var x = 1 & 1;
     return App;
   });
