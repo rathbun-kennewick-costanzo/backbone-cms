@@ -1,10 +1,11 @@
 define([
     'backbone',
     'communicator',
-    'hbs!tmpl/welcome'
+    'hbs!tmpl/welcome',
+    'routers/router'
   ],
 
-  function(Backbone, Communicator, Welcome_tmpl) {
+  function(Backbone, Communicator, Welcome_tmpl, Router) {
     'use strict';
 
     var welcomeTmpl = Welcome_tmpl;
@@ -16,8 +17,9 @@ define([
 
     /* Add initializers here */
     App.addInitializer(function() {
+      Backbone.history.start();
       document.body.innerHTML = welcomeTmpl({
-        success: "CONGRATS!"
+        success: "THIS IS WORKING!"
       });
       Communicator.mediator.trigger("APP:START");
     });
