@@ -1,8 +1,9 @@
 define([
     'backbone',
-    'backbone.marionette'
+    'backbone.marionette',
+    'views/item/login-view'
   ],
-  function(Backbone, Marionette) {
+  function(Backbone, Marionette, LoginView) {
     'use strict';
 
     var Controller = Backbone.Marionette.Controller.extend({
@@ -13,6 +14,11 @@ define([
 
       index: function() {
         console.log("index controller function fired");
+        var loginview = new LoginView();
+        App.content.show(loginview);
+      },
+
+      test: function() {
       }
     });
 

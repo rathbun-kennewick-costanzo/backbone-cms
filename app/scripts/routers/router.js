@@ -14,7 +14,7 @@ define([
       controller: Controller,
       appRoutes: {
         "": "index",
-        "test": "index"
+        "test": "test"
       }
     });
 
