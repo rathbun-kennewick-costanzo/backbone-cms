@@ -2,39 +2,113 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
 
-        <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+    <title></title>
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        
-        <link rel="stylesheet" href="styles/main.css">
-        
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
 
-        <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="lib/modernizr/modernizr.js"></script>
-        <!-- endbuild -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    </head>
+    <link rel="stylesheet" href="styles/main.css">
 
-    <body>
 
-        <div id="content"></div>
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="lib/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
 
-        <!-- build:js scripts/main.js -->
-        <script data-main="scripts/init" src="lib/requirejs/require.js"></script>
-        <!-- endbuild -->
+</head>
 
-        <script>document.write('<script src="http://'
-            + (location.host || 'localhost').split(':')[0]
-            + ':35729/livereload.js?snipver=1"><\/script>');
-        </script>
-    </body>
+<body>
+  <!--[if lt IE 8]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+  <div class="outer-wrap">
+    <header class="header">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-bars"></i>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img src="/img/vertebra-logo.png" alt="Vertebra CMS Logo" class="img-responsive logo">
+          </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#"><i class="fa fa-external-link-square"></i></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-picture-o"></i> Portfolio <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-bars"></i> All</a></li>
+                <li><a href="#"><i class="fa fa-plus"></i> New</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-align-left"></i> Blog <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-bars"></i> All</a></li>
+                <li><a href="#"><i class="fa fa-plus"></i> New</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i> Staff <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-bars"></i> All</a></li>
+                <li><a href="#"><i class="fa fa-plus"></i> New</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fa fa-user"></i> Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    
+    <div id="content" class="inner-wrap">
+      
+    </div>
+  </div>
+  <footer>
+    <div class="col-md-12 copyright">
+      <img src="/img/icon-logo-vertebra.png" alt="Vertebra CMS Icon Logo" class="img-responsive logo">
+      <p>
+      Copyright © <script type="text/javascript"> document.write(new Date().getFullYear());</script>  Vertebra <br>
+      <a href="http://www.walkingfishstudios.com">Walking Fish Studios</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- build:js scripts/main.js -->
+  <script data-main="scripts/init" src="lib/requirejs/require.js"></script>
+  <!-- endbuild -->
+
+  <script>
+  document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"><\/script>');
+  </script>
+</body>
+
 </html>
