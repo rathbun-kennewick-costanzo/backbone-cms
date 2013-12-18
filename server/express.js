@@ -5,7 +5,12 @@ var express = require('express'),
   mongoStore = require('connect-mongo')(express),
   flash = require('connect-flash'),
   path = require('path'),
-  config = require('./config');
+  config = require('./config'),
+  mongoose = require('mongoose'),
+  PortfolioEntry = mongoose.model('PortfolioEntries'),
+  Settings = mongoose.model('Settings'),
+  restify = require('express-restify-mongoose');
+
 
 module.exports = function(app, passport, db) {
   app.set('showStackError', true);
@@ -51,6 +56,14 @@ module.exports = function(app, passport, db) {
     //bodyParser should be above methodOverride
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+
+    //express-restify-mongoose
+    restify.serve(app, PortfolioEntry, {
+      plural: false
+    });
+    restify.serve(app, Settings, {
+      plural: false
+    });
 
     //express/mongo session storage
     app.use(express.session({

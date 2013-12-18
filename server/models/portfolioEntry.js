@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 /**
  * Portfolio Schema
  */
-var PortfolioSchema = new Schema({
+var PortfolioEntrySchema = new Schema({
   title: {
     type: String,
     required: true
@@ -48,4 +48,4 @@ var PortfolioSchema = new Schema({
   }
 });
 
-mongoose.model('Portfolio', PortfolioSchema);
+mongoose.model('PortfolioEntries', PortfolioEntrySchema, "portfolio_entries");

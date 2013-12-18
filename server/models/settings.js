@@ -48,4 +48,4 @@ var SettingsSchema = new Schema({
   }
 });
 
-mongoose.model('Settings', SettingsSchema);
+mongoose.model('Settings', SettingsSchema, 'settings');
