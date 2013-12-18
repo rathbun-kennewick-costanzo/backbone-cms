@@ -16,7 +16,10 @@
     "connect-mongo": "~0.4.0",
     "connect-flash": "~0.1.1",
     "bcrypt": "~0.7.7",
-    "express-restify-mongoose": "~0.5.8"
+    "express-restify-mongoose": "~0.5.8",
+    "consolidate": "~0.10.0",
+    "handlebars": "~1.1.2",
+    "express-slash": "~0.2.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
