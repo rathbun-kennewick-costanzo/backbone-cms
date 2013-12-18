@@ -3,7 +3,12 @@ define(function() {
 
 	/* return an array of specs to be run */
 	return {
-		specs: ['spec/exampleTest.js'
+		specs: ['spec/exampleTest.js',
+		'spec/views/composite/adminPortOverallView.js',
+		'spec/views/item/adminPortEntryView.js',
+		'spec/views/item/adminPortItemView.js',
+		'spec/views/item/login-view.js',
+		'spec/views/layout/adminSettingsOverallView.js'
 		]
 	};
 });
