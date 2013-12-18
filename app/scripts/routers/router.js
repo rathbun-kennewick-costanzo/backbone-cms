@@ -14,7 +14,11 @@ define([
       controller: Controller,
       appRoutes: {
         "": "index",
-        "test": "test"
+        "test": "test",
+        "admin/portfolio": "portfolio",
+        "admin/portfolio/new": "portfolioNew",
+        "admin/portfolio/edit": "portfolioEdit",
+        "admin/settings": "settings"
       }
     });
 

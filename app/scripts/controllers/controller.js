@@ -1,9 +1,11 @@
 define([
     'backbone',
     'backbone.marionette',
-    'views/item/login-view'
+    'views/composite/adminPortOverallView',
+    'views/item/adminPortEntryView',
+    'views/layout/adminSettingsOverallView'
   ],
-  function(Backbone, Marionette, LoginView) {
+  function(Backbone, Marionette, AdminPortOverallView, AdminPortEntryView, AdminSettingsOverallView) {
     'use strict';
 
     var Controller = Backbone.Marionette.Controller.extend({
@@ -18,8 +20,31 @@ define([
         App.content.show(loginview);
       },
 
-      test: function() {
-      }
+      portfolio: function() {
+        console.log("portfolio controller function fired");
+        var adminPortOverallView = new AdminPortOverallView();
+        App.content.show(adminPortOverallView);
+      },
+
+      portfolioNew: function() {
+        console.log("adminPortEntryView New controller function fired");
+        var adminPortEntryView = new AdminPortEntryView();
+        App.content.show(adminPortEntryView);
+      },
+
+      portfolioEdit: function() {
+        console.log("adminPortEntryView Edit controller function fired");
+        var adminPortEntryView = new AdminPortEntryView();
+        App.content.show(adminPortEntryView);
+      },
+
+      settings: function() {
+        console.log("adminSettingsOverallView controller function fired");
+        var adminSettingsOverallView = new AdminSettingsOverallView();
+        App.content.show(adminSettingsOverallView);
+      },
+
+      test: function() {}
     });
 
     return new Controller();

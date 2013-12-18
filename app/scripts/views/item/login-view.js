@@ -1,36 +1,36 @@
 define([
-	'backbone',
-	'hbs!tmpl/item/login-view_tmpl'
-],
-function( Backbone, LoginViewTmpl  ) {
+    'backbone',
+    'hbs!tmpl/item/login-view_tmpl'
+  ],
+  function(Backbone, LoginViewTmpl) {
     'use strict';
 
-	/* Return a ItemView class definition */
-	return Backbone.Marionette.ItemView.extend({
+    /* Return a ItemView class definition */
+    return Backbone.Marionette.ItemView.extend({
 
-		initialize: function() {
-			console.log("initialize a LoginView ItemView");
-		},
-		
-    	template: LoginViewTmpl,
-        
+      initialize: function() {
+        console.log("initialize a LoginView ItemView");
+      },
 
-    	/* ui selector cache */
-    	ui: {},
+      template: LoginViewTmpl,
 
-		/* Ui events hash */
-		events: {
-            "click": "clickFunction"
-        },
 
-		/* on render callback */
-		onRender: function() {
-            console.log("LoginView rendered");
-        },
+      /* ui selector cache */
+      ui: {},
 
-        clickFunction: function() {
-            alert("I've been clicked");
-        }
-	});
+      /* Ui events hash */
+      events: {
+        "click": "clickFunction"
+      },
 
-});
+      /* on render callback */
+      onRender: function() {
+        console.log("LoginView rendered");
+      },
+
+      clickFunction: function() {
+        alert("I've been clicked");
+      }
+    });
+
+  });
