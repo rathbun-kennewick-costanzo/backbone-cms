@@ -1,1 +1,41 @@
-{{!empty AdminportentryviewTmpl template}}
+<form id="portfolioEntry">
+  <div class="col-md-12">
+    <input type="text" class="form-control admin-input-title" placeholder="Title">
+  </div>
+  <div class="col-md-6 markdown-description">
+    <textarea class="form-control admin-textarea" rows="15" placeholder="Project Description"></textarea>
+    <a href="#" class="markdown-description-btn" data-toggle="popover"><i class="fa fa-info-circle"></i></a>
+  </div>
+  <div class="col-md-6">
+    <textarea class="form-control admin-textarea" rows="15" placeholder="Project Description" disabled></textarea>
+  </div>
+  <div class="col-md-6">
+    <h2>Portfolio Images</h2>
+    <div class="file-upload">
+      <div class="col-md-6 remove-left-padding">
+        <input type="text" class="form-control admin-input input-lg" placeholder="Main Image Location">
+        <a href="#"><i class="fa fa-cloud-upload file-upload-icon"></i></a>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control admin-input input-lg" placeholder="Image Alt Text">
+      </div>
+    </div>
+    <!-- upload more images populate here -->
+    <div class="new-image-upload"></div>
+    <div class="col-md-12 remove-left-padding">
+      <a type="button" class="btn btn-success add-img-btn">Add another image <i class="fa fa-plus-circle"></i></a>
+      <a type="button" class="btn btn-danger remove-img-btn">Remove image <i class="fa fa-minus-circle"></i></a>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h2>Meta Data</h2>
+    <input type="text" class="form-control admin-input input-lg" placeholder="Page Title">
+    <input type="text" class="form-control admin-input input-lg" placeholder="Meta Description">
+    <input type="text" class="form-control admin-input input-lg" placeholder="Url Path">
+    <input type="text" class="form-control admin-input input-lg" placeholder="Tags" data-role="tagsinput">
+  </div>
+  <div class="col-md-12 btn-group publish-btns">
+    <a type="button" class="btn btn-primary btn-lg save-draft"><i class="fa fa-floppy-o"></i> Save Draft</a>
+    <a type="button" class="btn btn-success btn-lg publish"><i class="fa fa-arrow-up"></i> Publish</a>
+  </div>
+</form>
