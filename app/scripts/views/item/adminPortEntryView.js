@@ -1,8 +1,9 @@
 define([
     'backbone',
-    'hbs!tmpl/item/adminPortEntryView_tmpl'
+    'hbs!tmpl/item/adminPortEntryView_tmpl',
+    'marked'
   ],
-  function(Backbone, AdminportentryviewTmpl) {
+  function(Backbone, AdminportentryviewTmpl, marked) {
     'use strict';
 
     /* Return a ItemView class definition */
@@ -71,9 +72,11 @@ define([
         });
       },
 
-      markdownConverter: function() {
-        console.log("markdown converter");
-      },
+      markdownConverter: _.debounce(function() {
+        var mark = $('#pEntryBodyMark').val();
+        var html = marked(mark);
+        $('#pEntryBodyHtml').html(html);
+      }, 100),
 
       /* on render callback */
       onRender: function() {}
