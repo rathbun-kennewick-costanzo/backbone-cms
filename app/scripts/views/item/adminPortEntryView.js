@@ -1,9 +1,10 @@
 define([
     'backbone',
     'hbs!tmpl/item/adminPortEntryView_tmpl',
-    'marked'
+    'marked',
+    'backboneSyphon'
   ],
-  function(Backbone, AdminportentryviewTmpl, marked) {
+  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon) {
     'use strict';
 
     /* Return a ItemView class definition */
@@ -21,18 +22,36 @@ define([
 
       /* Ui events hash */
       events: {
-        "click .publish-btns .publish": "addPortfolioEntry",
-        "click .publish-btns .save-draft": "savePortfolioEntry",
         "mouseenter .markdown-description-btn .fa": "initializeMarkdownInfo",
-        "keyup .markdown-description :input": "markdownConverter"
+        "keyup .markdown-description :input": "markdownConverter",
+        "click .publish-btns .publish": "publish",
+        "click .publish-btns .save-draft": "save"
       },
 
-      addPortfolioEntry: function() {
-        console.log("add port item");
+      publish: function(e) {
+        e.preventDefault();
+        var data = Backbone.Syphon.serialize(this);
+
+        data.bodyHtml = $('#pEntryBodyHtml').html();
+        data.draft = false;
+
+        console.log(data);
+        this.model.set(data);
+
+        this.model.save();
       },
 
-      savePortfolioEntry: function() {
-        console.log("save port item");
+      save: function(e) {
+        e.preventDefault();
+        var data = Backbone.Syphon.serialize(this);
+
+        data.bodyHtml = $('#pEntryBodyHtml').html();
+        data.draft = true;
+
+        console.log(data);
+        this.model.set(data);
+
+        this.model.save();
       },
 
       initializeMarkdownInfo: function() {

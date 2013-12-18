@@ -46,7 +46,8 @@ require.config({
     hbs: '../lib/require-handlebars-plugin/hbs',
 
     // Custom Dependencies
-    marked: '../lib/marked/lib/marked'
+    marked: '../lib/marked/lib/marked',
+    backboneSyphon: '../lib/backbone.syphon/lib/amd/backbone.syphon'
   },
 
   hbs: {
