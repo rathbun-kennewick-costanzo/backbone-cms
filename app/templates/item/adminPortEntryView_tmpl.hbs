@@ -1,13 +1,13 @@
 <form id="portfolioEntry">
   <div class="col-md-12">
-    <input type="text" class="form-control admin-input-title" placeholder="Title">
+    <input type="text" class="form-control admin-input-title" name="title" placeholder="Title">
   </div>
   <div class="col-md-6 markdown-description">
-    <textarea id="pEntryBodyMark" class="form-control admin-textarea markdown-description" rows="15" placeholder="Project Description"></textarea>
+    <textarea id="pEntryBodyMark" class="form-control admin-textarea markdown-description" rows="15" placeholder="Project Description" name="bodyMarkdown"></textarea>
     <a href="#" class="markdown-description-btn" data-toggle="popover"><i class="fa fa-info-circle"></i></a>
   </div>
   <div class="col-md-6">
-    <div id="pEntryBodyHtml" class="entry-body-html"></div>
+    <div id="pEntryBodyHtml" class="entry-body-html" name="bodyHtml"></div>
     {{!-- <textarea id="pEntryBodyHtml" class="form-control admin-textarea" rows="15" placeholder="Project Description" disabled></textarea> --}}
   </div>
   <div class="col-md-6">
@@ -30,13 +30,13 @@
   </div>
   <div class="col-md-6">
     <h2>Meta Data</h2>
-    <input type="text" class="form-control admin-input input-lg" placeholder="Page Title">
-    <input type="text" class="form-control admin-input input-lg" placeholder="Meta Description">
-    <input type="text" class="form-control admin-input input-lg" placeholder="Url Path">
-    <input type="text" class="form-control admin-input input-lg" placeholder="Tags" data-role="tagsinput">
+    <input type="text" class="form-control admin-input input-lg" name="pageTitle" placeholder="Page Title">
+    <input type="text" class="form-control admin-input input-lg" name="metaDescription" placeholder="Meta Description">
+    <input type="text" class="form-control admin-input input-lg" name="slug" placeholder="Url Path">
+    <input type="text" class="form-control admin-input input-lg" name="sortTags" placeholder="Tags" data-role="tagsinput">
   </div>
   <div class="col-md-12 btn-group publish-btns">
     <a type="button" class="btn btn-primary btn-lg save-draft"><i class="fa fa-floppy-o"></i> Save Draft</a>
-    <a type="button" class="btn btn-success btn-lg publish"><i class="fa fa-arrow-up"></i> Publish</a>
+    <a type="submit" class="btn btn-success btn-lg publish"><i class="fa fa-arrow-up"></i> Publish</a>
   </div>
 </form>

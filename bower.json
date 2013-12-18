@@ -17,7 +17,8 @@
     "chai": "~1.7.2",
     "sinon": "~1.7.3",
     "font-awesome": "~4.0.3",
-    "marked": "~0.2.10"
+    "marked": "~0.2.10",
+    "backbone.syphon": "~0.4.1"
   },
   "devDependencies": {},
   "directory": "bower_components"
