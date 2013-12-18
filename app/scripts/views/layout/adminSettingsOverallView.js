@@ -1,31 +1,31 @@
 define([
-	'backbone',
-	'hbs!tmpl/layout/adminSettingsOverallView_tmpl'
-],
-function( Backbone, AdminsettingsoverallviewTmpl  ) {
+    'backbone',
+    'hbs!tmpl/layout/adminSettingsOverallView_tmpl'
+  ],
+  function(Backbone, AdminsettingsoverallviewTmpl) {
     'use strict';
 
-	/* Return a Layout class definition */
-	return Backbone.Marionette.Layout.extend({
+    /* Return a Layout class definition */
+    return Backbone.Marionette.Layout.extend({
 
-		initialize: function() {
-			console.log("initialize a Adminsettingsoverallview Layout");
-		},
-		
-    	template: AdminsettingsoverallviewTmpl,
-    	
+      initialize: function() {
+        console.log("initialize a Adminsettingsoverallview Layout");
+      },
 
-    	/* Layout sub regions */
-    	regions: {},
+      template: AdminsettingsoverallviewTmpl,
 
-    	/* ui selector cache */
-    	ui: {},
 
-		/* Ui events hash */
-		events: {},
+      /* Layout sub regions */
+      regions: {},
 
-		/* on render callback */
-		onRender: function() {}
-	});
+      /* ui selector cache */
+      ui: {},
 
-});
+      /* Ui events hash */
+      events: {},
+
+      /* on render callback */
+      onRender: function() {}
+    });
+
+  });

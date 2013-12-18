@@ -1,28 +1,28 @@
 define([
-	'backbone',
-	'hbs!tmpl/item/adminPortEntryView_tmpl'
-],
-function( Backbone, AdminportentryviewTmpl  ) {
+    'backbone',
+    'hbs!tmpl/item/adminPortEntryView_tmpl'
+  ],
+  function(Backbone, AdminportentryviewTmpl) {
     'use strict';
 
-	/* Return a ItemView class definition */
-	return Backbone.Marionette.ItemView.extend({
+    /* Return a ItemView class definition */
+    return Backbone.Marionette.ItemView.extend({
 
-		initialize: function() {
-			console.log("initialize a Adminportentryview ItemView");
-		},
-		
-    	template: AdminportentryviewTmpl,
-        
+      initialize: function() {
+        console.log("initialize a Adminportentryview ItemView");
+      },
 
-    	/* ui selector cache */
-    	ui: {},
+      template: AdminportentryviewTmpl,
 
-		/* Ui events hash */
-		events: {},
 
-		/* on render callback */
-		onRender: function() {}
-	});
+      /* ui selector cache */
+      ui: {},
 
-});
+      /* Ui events hash */
+      events: {},
+
+      /* on render callback */
+      onRender: function() {}
+    });
+
+  });
