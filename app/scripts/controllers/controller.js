@@ -32,7 +32,7 @@ define([
         App.content.show(adminPortEntryView);
       },
 
-      portfolioEdit: function() {
+      portfolioEdit: function(id) {
         console.log("adminPortEntryView Edit controller function fired");
         var adminPortEntryView = new AdminPortEntryView();
         App.content.show(adminPortEntryView);

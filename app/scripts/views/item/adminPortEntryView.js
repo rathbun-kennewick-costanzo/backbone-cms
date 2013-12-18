@@ -2,9 +2,10 @@ define([
     'backbone',
     'hbs!tmpl/item/adminPortEntryView_tmpl',
     'marked',
-    'backboneSyphon'
+    'backboneSyphon',
+    'models/portfolioEntry'
   ],
-  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon) {
+  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon, PortfolioEntry) {
     'use strict';
 
     /* Return a ItemView class definition */
@@ -29,29 +30,35 @@ define([
       },
 
       publish: function(e) {
+        console.log("publish function fired");
         e.preventDefault();
-        var data = Backbone.Syphon.serialize(this);
 
-        data.bodyHtml = $('#pEntryBodyHtml').html();
-        data.draft = false;
-
-        console.log(data);
-        this.model.set(data);
-
-        this.model.save();
+        this.saveToDB(false);
       },
 
       save: function(e) {
+        console.log("save function fired");
         e.preventDefault();
+
+        this.saveToDB(true);
+      },
+
+      saveToDB: function(isdraft) {
+        var entry = new PortfolioEntry();
+        this.model = entry;
+
         var data = Backbone.Syphon.serialize(this);
-
         data.bodyHtml = $('#pEntryBodyHtml').html();
-        data.draft = true;
+        data.draft = isdraft;
+        data.date = new Date();
+        data.bodyExcerpt = marked(data.bodyMarkdown.slice(0, 100));
 
-        console.log(data);
         this.model.set(data);
-
-        this.model.save();
+        this.model.save(data, {
+          success: function(model) {
+            console.log(model);
+          }
+        });
       },
 
       initializeMarkdownInfo: function() {
