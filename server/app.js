@@ -68,10 +68,6 @@ dbConnection.once('open', function callback() {
   app.use(express.static(path.join(__dirname, '../.tmp')));
 */
 
-  // route index.html
-  app.get('/', function(req, res) {
-    res.sendfile(path.join(__dirname, '../app/index.html'));
-  });
 
   // start server
   http.createServer(app).listen(app.get('port'), function() {

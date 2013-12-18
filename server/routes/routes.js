@@ -1,6 +1,11 @@
 module.exports = function(app, passport) {
   var users = require('../controllers/users.js');
 
+  // route index.html
+  app.get('/admin', function(req, res) {
+    res.render('admin/index.html');
+  });
+
   //TODO:chrisk split these up into separate files
   console.log("this got included");
   app.get('/signin', users.signin);
