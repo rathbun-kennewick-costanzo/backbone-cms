@@ -43,7 +43,10 @@ require.config({
     /* require handlebars plugin - Alex Sexton */
     i18nprecompile: '../lib/require-handlebars-plugin/hbs/i18nprecompile',
     json2: '../lib/require-handlebars-plugin/hbs/json2',
-    hbs: '../lib/require-handlebars-plugin/hbs'
+    hbs: '../lib/require-handlebars-plugin/hbs',
+
+    // Custom Dependencies
+    marked: '../lib/marked/lib/marked'
   },
 
   hbs: {

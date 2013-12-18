@@ -3,11 +3,12 @@
     <input type="text" class="form-control admin-input-title" placeholder="Title">
   </div>
   <div class="col-md-6 markdown-description">
-    <textarea class="form-control admin-textarea" rows="15" placeholder="Project Description"></textarea>
+    <textarea id="pEntryBodyMark" class="form-control admin-textarea markdown-description" rows="15" placeholder="Project Description"></textarea>
     <a href="#" class="markdown-description-btn" data-toggle="popover"><i class="fa fa-info-circle"></i></a>
   </div>
   <div class="col-md-6">
-    <textarea class="form-control admin-textarea" rows="15" placeholder="Project Description" disabled></textarea>
+    <div id="pEntryBodyHtml" class="entry-body-html"></div>
+    {{!-- <textarea id="pEntryBodyHtml" class="form-control admin-textarea" rows="15" placeholder="Project Description" disabled></textarea> --}}
   </div>
   <div class="col-md-6">
     <h2>Portfolio Images</h2>
