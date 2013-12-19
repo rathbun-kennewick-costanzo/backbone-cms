@@ -2,9 +2,11 @@ define([
     'backbone',
     'hbs!tmpl/item/adminPortEntryView_tmpl',
     'marked',
-    'backboneSyphon'
+    'backboneSyphon',
+    'models/portfolioEntry',
+    'routers/router'
   ],
-  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon) {
+  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon, PortfolioEntry, Router) {
     'use strict';
 
     /* Return a ItemView class definition */
@@ -29,29 +31,47 @@ define([
       },
 
       publish: function(e) {
+        console.log("publish function fired");
         e.preventDefault();
-        var data = Backbone.Syphon.serialize(this);
+        var isDraft = false;
 
-        data.bodyHtml = $('#pEntryBodyHtml').html();
-        data.draft = false;
-
-        console.log(data);
-        this.model.set(data);
-
-        this.model.save();
+        this.saveToDB(isDraft);
       },
 
       save: function(e) {
+        console.log("save function fired");
         e.preventDefault();
+        var isDraft = true;
+
+        this.saveToDB(isDraft);
+      },
+
+      saveToDB: function(draft) {
+
+        // if isdraft is true
+        // we need to grab save the model to the 
+        // database and then grab the model _id
+        // so that we can either save again or publish
+
         var data = Backbone.Syphon.serialize(this);
-
         data.bodyHtml = $('#pEntryBodyHtml').html();
-        data.draft = true;
+        data.draft = draft;
+        data.date = new Date();
+        data.bodyExcerpt = marked(data.bodyMarkdown.slice(0, 100));
 
-        console.log(data);
         this.model.set(data);
+        var that = this;
+        this.model.save(data, {
+          success: function() {
+            if (draft) {
+              window.Router.navigate("/admin/portfolio/edit/" + that.model.toJSON()._id, {
+                trigger: true
+              });
+            }
 
-        this.model.save();
+            window.Router.navigate("/admin/portfolio");
+          }
+        });
       },
 
       initializeMarkdownInfo: function() {
@@ -98,7 +118,10 @@ define([
       }, 100),
 
       /* on render callback */
-      onRender: function() {}
+      onRender: function() {
+        this.markdownConverter();
+
+      }
     });
 
   });

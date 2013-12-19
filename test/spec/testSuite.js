@@ -3,7 +3,9 @@ define(function() {
 
 	/* return an array of specs to be run */
 	return {
-		specs: ['spec/exampleTest.js',
+		specs: ['spec/collections/portfolioEntries.js',
+		'spec/exampleTest.js',
+		'spec/models/portfolioEntry.js',
 		'spec/views/composite/adminPortOverallView.js',
 		'spec/views/item/adminPortEntryView.js',
 		'spec/views/item/adminPortItemView.js',
