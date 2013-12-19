@@ -63,14 +63,6 @@ module.exports = function(app, passport, db) {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
 
-    //express-restify-mongoose
-    restify.serve(app, PortfolioEntry, {
-      plural: false
-    });
-    restify.serve(app, Settings, {
-      plural: false
-    });
-
     //express/mongo session storage
     app.use(express.session({
       secret: 'WATSECRET',
@@ -86,6 +78,15 @@ module.exports = function(app, passport, db) {
     //use passport session
     app.use(passport.initialize());
     app.use(passport.session());
+
+
+    //express-restify-mongoose
+    restify.serve(app, PortfolioEntry, {
+      plural: false
+    });
+    restify.serve(app, Settings, {
+      plural: false
+    });
 
     //routes should be at the last
     app.use(app.router);
