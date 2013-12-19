@@ -2,7 +2,7 @@ define([
     'backbone',
     'models/portfolioEntry'
   ],
-  function(Backbone, Portfolioentry) {
+  function(Backbone, PortfolioEntry) {
     'use strict';
 
     /* Return a collection class definition */
@@ -11,7 +11,7 @@ define([
         console.log("initialize a Portfolioentries collection");
       },
       url: "/api/v1/PortfolioEntries",
-      model: Portfolioentry
+      model: PortfolioEntry
 
     });
   });
