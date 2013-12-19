@@ -83,7 +83,9 @@ define([
               });
             }
             else {
-              window.Router.navigate("/admin/portfolio");
+              window.Router.navigate("/admin/portfolio", {
+                trigger: true
+              });
             }
           }
         });

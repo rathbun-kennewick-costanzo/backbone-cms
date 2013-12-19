@@ -4,10 +4,11 @@ define([
     'views/composite/adminPortOverallView',
     'views/item/adminPortEntryView',
     'views/layout/adminSettingsOverallView',
-    'models/portfolioEntry'
+    'models/portfolioEntry',
+    'collections/portfolioEntries'
 
   ],
-  function(Backbone, Marionette, AdminPortOverallView, AdminPortEntryView, AdminSettingsOverallView, PortfolioEntryModel) {
+  function(Backbone, Marionette, AdminPortOverallView, AdminPortEntryView, AdminSettingsOverallView, PortfolioEntryModel, PortfolioEntries) {
     'use strict';
 
     var Controller = Backbone.Marionette.Controller.extend({
@@ -24,8 +25,20 @@ define([
 
       portfolio: function() {
         console.log("portfolio controller function fired");
-        var adminPortOverallView = new AdminPortOverallView();
-        App.content.show(adminPortOverallView);
+        var portfolioEntries = new PortfolioEntries();
+        portfolioEntries.fetch({
+          success: function() {
+            console.log("successful fetch");
+            var adminPortOverallView = new AdminPortOverallView({
+              collection: portfolioEntries
+            });
+            App.content.show(adminPortOverallView);
+          },
+
+          error: function(error) {
+            console.log(error);
+          }
+        });
       },
 
       portfolioNew: function() {

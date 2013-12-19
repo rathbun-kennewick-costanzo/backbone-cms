@@ -37,6 +37,9 @@ dbConnection.once('open', function callback() {
   };
   walk(models_path);
 
+  //load auth middleware
+  var auth = require('./middleware/authorization');
+
   console.log("GOOGLE IS " + JSON.stringify(config.get('google')));
 
   //passport
@@ -45,11 +48,11 @@ dbConnection.once('open', function callback() {
   var app = express();
 
   //configure express
-  require('./express.js')(app, passport, db);
+  require('./express.js')(app, passport, db, auth);
 
 
   //configure routes
-  require('./routes/routes.js')(app, passport);
+  require('./routes/routes.js')(app, passport, auth);
   /*
   app.configure(function() {
     app.set('port', config.get('PORT'));

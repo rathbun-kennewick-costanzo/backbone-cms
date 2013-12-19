@@ -14,7 +14,7 @@ var express = require('express'),
   restify = require('express-restify-mongoose');
 
 
-module.exports = function(app, passport, db) {
+module.exports = function(app, passport, db, auth) {
   app.set('showStackError', true);
 
   //Prettify HTML
@@ -101,14 +101,14 @@ module.exports = function(app, passport, db) {
       console.error(err.stack);
 
       //Error page
-      res.status(500).render('500', {
+      res.status(500).render('500.html', {
         error: err.stack
       });
     });
 
     //Assume 404 since no middleware responded
     app.use(function(req, res, next) {
-      res.status(404).render('404', {
+      res.status(404).render('404.html', {
         url: req.originalUrl,
         error: 'Not found'
       });

@@ -10,42 +10,15 @@ var SettingsSchema = new Schema({
     type: String,
     required: true
   },
-  description: {
-    type: String,
-    required: true
-  },
-  facebook: {
-    link: String,
-    icon: String
-  },
-  github: {
-    link: String,
-    icon: String
-  },
-  google: {
-    link: String,
-    icon: String
-  },
-  linkedin: {
-    link: String,
-    icon: String
-  },
-  pinterest: {
-    link: String,
-    icon: String
-  },
-  twitter: {
-    link: String,
-    icon: String
-  },
-  vimeo: {
-    link: String,
-    icon: String
-  },
-  youtube: {
-    link: String,
-    icon: String
-  }
+  description: String,
+  facebook: String,
+  github: String,
+  google: String,
+  linkedin: String,
+  pinterest: String,
+  twitter: String,
+  vimeo: String,
+  youtube: String
 });
 
 mongoose.model('Settings', SettingsSchema, 'settings');
