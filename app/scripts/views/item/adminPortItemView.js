@@ -13,13 +13,20 @@ define([
       },
 
       template: AdminportitemviewTmpl,
-
+      tagName: "article",
+      className: "col-md-4 overview-container",
 
       /* ui selector cache */
       ui: {},
 
       /* Ui events hash */
-      events: {},
+      events: {
+        "click .portDelete": "delete"
+      },
+
+      delete: function() {
+        this.model.destroy();
+      },
 
       /* on render callback */
       onRender: function() {}

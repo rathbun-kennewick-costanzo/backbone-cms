@@ -11,12 +11,12 @@ define([
 
       initialize: function() {
         console.log("initialize a Adminportoverallview CompositeView");
+        console.log(this.collection);
       },
 
       itemView: Adminportitemview,
 
       template: AdminportoverallviewTmpl,
-
 
       /* ui selector cache */
       ui: {},
