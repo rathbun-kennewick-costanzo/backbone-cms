@@ -17,10 +17,10 @@ define([
         "test": "test",
         "admin/portfolio": "portfolio",
         "admin/portfolio/new": "portfolioNew",
-        "admin/portfolio/edit": "portfolioEdit",
+        "admin/portfolio/edit/:id": "portfolioEdit",
         "admin/settings": "settings"
       }
     });
-
-    return new Router();
+    var r = window.Router = new Router();
+    return r;
   });

@@ -7,22 +7,24 @@ define([
     /* Return a model class definition */
     return Backbone.Model.extend({
 
-      url: "/api/v1/PortfolioEntries",
+      urlRoot: "/api/v1/PortfolioEntries",
+      idAttribute: "_id",
 
       initialize: function() {
         console.log("initialize a Portfolioentry model");
       },
 
       defaults: {
+        _id: null,
         title: "",
         bodyMarkdown: "",
         bodyHtml: "",
-        bodyExcerpt: "TEMPORARY_DEFAULT",
-        pageTitle: "TEMPORARY_DEFAULT",
-        metaDescription: "TEMPORARY_DEFAULT",
-        slug: "TEMPORARY_DEFAULT",
+        bodyExcerpt: "",
+        pageTitle: "",
+        metaDescription: "",
+        slug: "",
         sortTags: [],
-        date: "TEMPORARY_DEFAULT",
+        date: "",
         sortingId: "",
         draft: true
       },

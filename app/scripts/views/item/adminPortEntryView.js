@@ -3,9 +3,10 @@ define([
     'hbs!tmpl/item/adminPortEntryView_tmpl',
     'marked',
     'backboneSyphon',
-    'models/portfolioEntry'
+    'models/portfolioEntry',
+    'routers/router'
   ],
-  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon, PortfolioEntry) {
+  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon, PortfolioEntry, Router) {
     'use strict';
 
     /* Return a ItemView class definition */
@@ -32,31 +33,43 @@ define([
       publish: function(e) {
         console.log("publish function fired");
         e.preventDefault();
+        var isDraft = false;
 
-        this.saveToDB(false);
+        this.saveToDB(isDraft);
       },
 
       save: function(e) {
         console.log("save function fired");
         e.preventDefault();
+        var isDraft = true;
 
-        this.saveToDB(true);
+        this.saveToDB(isDraft);
       },
 
-      saveToDB: function(isdraft) {
-        var entry = new PortfolioEntry();
-        this.model = entry;
+      saveToDB: function(draft) {
+
+        // if isdraft is true
+        // we need to grab save the model to the 
+        // database and then grab the model _id
+        // so that we can either save again or publish
 
         var data = Backbone.Syphon.serialize(this);
         data.bodyHtml = $('#pEntryBodyHtml').html();
-        data.draft = isdraft;
+        data.draft = draft;
         data.date = new Date();
         data.bodyExcerpt = marked(data.bodyMarkdown.slice(0, 100));
 
         this.model.set(data);
+        var that = this;
         this.model.save(data, {
-          success: function(model) {
-            console.log(model);
+          success: function() {
+            if (draft) {
+              window.Router.navigate("/admin/portfolio/edit/" + that.model.toJSON()._id, {
+                trigger: true
+              });
+            }
+
+            window.Router.navigate("/admin/portfolio");
           }
         });
       },
@@ -105,7 +118,10 @@ define([
       }, 100),
 
       /* on render callback */
-      onRender: function() {}
+      onRender: function() {
+        this.markdownConverter();
+
+      }
     });
 
   });
