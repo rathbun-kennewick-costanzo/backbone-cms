@@ -5,36 +5,29 @@ var mongoose = require('mongoose'),
   path = require('path'),
   User = mongoose.model('User');
 
+
+exports.index = function(req, res, next) {
+  res.render('users/index.html');
+}
 /**
  * Auth callback
  */
 exports.authCallback = function(req, res, next) {
-  //res.redirect('/');
-  res.sendfile(path.join(__dirname, '../../app/static-temps/signedin.html'));
+  res.redirect('users');
 };
 
 /**
  * Show login form
  */
 exports.signin = function(req, res) {
-  /*res.render('users/signin', {
-    title: 'Signin',
-    message: req.flash('error')
-  });
-*/
-  console.log('IN SIGNIN');
-  res.sendfile(path.join(__dirname, '../../app/static-temps/signin.html'));
+  res.render('users/signin.html');
 };
 
 /**
  * Show sign up form
  */
 exports.signup = function(req, res) {
-  /*res.render('users/signup', {
-    title: 'Sign up',
-    user: new User()
-  });*/
-  res.sendfile(path.join(__dirname, '../../app/static-temps/signup.html'));
+  res.render('users/signup.html');
 };
 
 /**
@@ -42,16 +35,14 @@ exports.signup = function(req, res) {
  */
 exports.signout = function(req, res) {
   req.logout();
-  //res.redirect('/signin');
-  res.sendfile(path.join(__dirname, '../../app/static-temps/signin.html'));
+  res.redirect('users/signin');
 };
 
 /**
  * Session
  */
 exports.session = function(req, res) {
-  //res.redirect('/');
-  res.sendfile(path.join(__dirname, '../../app/static-temps/signedin.html'));
+  res.redirect('users/');
 };
 
 /**
@@ -64,16 +55,14 @@ exports.create = function(req, res) {
   user.provider = 'local';
   user.save(function(err) {
     if (err) {
-      /*return res.render('users/signup', {
+      return res.render('users/signup.html', {
         errors: err.errors,
         user: user
-      });*/
-      console.log("ERROR CREATING USER: " + err);
-      return res.sendfile(path.join(__dirname, '../../app/static-temps/signup.html'));
+      });
     }
     req.logIn(user, function(err) {
       if (err) return next(err);
-      return res.sendfile(path.join(__dirname, '../../app/static-temps/signedin.html'));
+      return res.redirect('users/');
     });
   });
 };
