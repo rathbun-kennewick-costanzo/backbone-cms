@@ -1,40 +1,34 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
-
+<html lang="en">
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-    <title></title>
-
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-
-
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="/lib/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
-
-    <style>
-      html { 
-        background: black;
-      }
-      img{
-        width: 100%
-      }
-    </style>
+    <meta charset="UTF-8">
+    <title>404</title>
 </head>
+<style>
+    html {
+        background: black;
+    }
+    img {
+        width: 100%;
+        -webkit-animation-name: rotate;
+        -webkit-animation-duration: 15s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: ease;
+        -webkit-animation-fill-mode: forwards;
+    }
 
+    @-webkit-keyframes rotate 
+    {
+
+    from 
+        {-webkit-transform: translate(0px, 0px) scale(1, 1);}
+    to
+        {-webkit-transform: translate(-500px, 0px) scale(3,3);
+        }
+    }
+</style>
 <body>
-  <div>
-    <img src="/img/404.jpg"/>
-  </div>
-</body>
 
+    <img src="/img/404.jpg" alt="404">
+</body>
 </html>
