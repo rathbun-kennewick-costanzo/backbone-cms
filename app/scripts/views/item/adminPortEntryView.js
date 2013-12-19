@@ -68,8 +68,11 @@ define([
                 trigger: true
               });
             }
-
-            window.Router.navigate("/admin/portfolio");
+            else {
+              window.Router.navigate("/admin/portfolio", {
+                trigger: true
+              });
+            }
           }
         });
       },
