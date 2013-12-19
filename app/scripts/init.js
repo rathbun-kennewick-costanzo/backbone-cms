@@ -17,6 +17,10 @@ require.config({
     bootstrap: {
       deps: ['jquery'],
       exports: 'jquery'
+    },
+    parsley: {
+      deps: ['bootstrap'],
+      exports: 'parsley'
     }
   },
 
@@ -47,7 +51,8 @@ require.config({
 
     // Custom Dependencies
     marked: '../lib/marked/lib/marked',
-    backboneSyphon: '../lib/backbone.syphon/lib/amd/backbone.syphon'
+    backboneSyphon: '../lib/backbone.syphon/lib/amd/backbone.syphon',
+    parsley: '../lib/parsleyjs/dist/parsley.min'
   },
 
   hbs: {
