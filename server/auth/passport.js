@@ -55,22 +55,27 @@ module.exports = function(passport) {
       User.findOne({
         'google.id': profile.id
       }, function(err, user) {
-        if (!user) {
-          user = new User({
-            name: profile.displayName,
-            email: profile.emails[0].value,
-            username: profile.username,
-            provider: 'google',
-            google: profile._json
-          });
-          user.save(function(err) {
-            if (err) console.log(err);
+        User.count({}, function(err, count) {
+          if (!user && count === 0) {
+            user = new User({
+              name: profile.displayName,
+              email: profile.emails[0].value,
+              username: profile.username,
+              provider: 'google',
+              google: profile._json
+            });
+            user.save(function(err) {
+              if (err) console.log(err);
+              return done(err, user);
+            });
+          }
+          else if (user) {
             return done(err, user);
-          });
-        }
-        else {
-          return done(err, user);
-        }
+          }
+          else {
+            return done(null, false);
+          }
+        });
       });
     }
   ));
