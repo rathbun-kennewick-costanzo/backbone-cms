@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/styles/main.css">
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/modernizr/modernizr.js"></script>
+    <script src="/lib/parsleyjs/dist/parsley.min.js"></script>
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -31,21 +32,18 @@
       <div class="inner-wrap">
         <div class="col-sm-6 col-centered">
           <h1>Sign up</h1>
-          <form accept-charset="UTF-8" action="/users" method="post">
+          <form accept-charset="UTF-8" action="/users" method="post" parsley-validate>
             <label for="name">Name</label>
-            <input id="name" class="form-control admin-input input-lg" name="name" type="text" />
+            <input id="name" class="form-control admin-input input-lg" name="name" type="text" parsley-required="true"/>
 
             <label for="email">Email</label>
-            <input id="email" class="form-control admin-input input-lg" name="email" type="text" />
-            
-            <label for="username">Username</label>
-            <input id="username" class="form-control admin-input input-lg" name="username" type="text" />
+            <input id="email" class="form-control admin-input input-lg" name="email" parsley-type="email" parsley-required="true"/>
 
             <label for="password">Password</label>
-            <input id="password" class="form-control admin-input input-lg" name="password" type="password" />
+            <input id="password" class="form-control admin-input input-lg" name="password" type="password" parsley-required="true" />
 
             <label for="password_confirmation">Confirmation</label>
-            <input id="password_confirmation" class="form-control admin-input input-lg" type="password" />
+            <input id="password_confirmation" class="form-control admin-input input-lg" type="password" parsley-required="true" parsley-equalto="#password" />
 
             <input class="btn btn-lg btn-primary" type="submit" />
           </form>
