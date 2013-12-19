@@ -104,9 +104,13 @@ module.exports = function(grunt) {
 
     // open app and test page
     open: {
-      server: {
+      admin: {
+        path: 'http://localhost:<%= express.options.port %>/admin'
+      },
+      pub: {
         path: 'http://localhost:<%= express.options.port %>'
-      }
+      },
+
     },
 
     clean: {
@@ -293,15 +297,32 @@ module.exports = function(grunt) {
     grunt.option('force', true);
 
     grunt.task.run([
-      'clean:server',
-      'compass:server',
-      'connect:testserver',
-      'express:dev',
-      'exec',
-      'open',
+      'preOpen',
+      'open:pub',
       'watch'
     ]);
   });
+
+  grunt.registerTask('pub', [
+    'default'
+  ]);
+
+  grunt.registerTask('admin', function() {
+    grunt.option('force', true);
+    grunt.task.run([
+      'preOpen',
+      'open:admin',
+      'watch'
+    ]);
+  });
+
+  grunt.registerTask('preOpen', [
+    'clean:server',
+    'compass:server',
+    'connect:testserver',
+    'express:dev',
+    'exec'
+  ]);
 
   // todo fix these
   grunt.registerTask('test', [

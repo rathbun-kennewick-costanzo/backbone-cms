@@ -6,6 +6,8 @@ var express = require('express'),
   flash = require('connect-flash'),
   path = require('path'),
   config = require('./config'),
+  engines = require('consolidate'),
+  slash = require('express-slash'),
   mongoose = require('mongoose'),
   PortfolioEntry = mongoose.model('PortfolioEntries'),
   Settings = mongoose.model('Settings'),
@@ -17,6 +19,9 @@ module.exports = function(app, passport, db) {
 
   //Prettify HTML
   app.locals.pretty = true;
+
+  //Enable strict routing
+  app.enable('strict routing');
 
   //Should be placed before express.static
   app.use(express.compress({
@@ -44,7 +49,8 @@ module.exports = function(app, passport, db) {
   //Set views path, template engine and default layout
   app.set('port', config.get('PORT'));
   app.set('view engine', 'handlebars');
-  app.set('views', __dirname + '../app/scripts/views');
+  app.set('views', __dirname + '/views');
+  app.engine('.html', engines.handlebars);
 
   //Enable jsonp
   app.enable("jsonp callback");
@@ -56,14 +62,6 @@ module.exports = function(app, passport, db) {
     //bodyParser should be above methodOverride
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-
-    //express-restify-mongoose
-    restify.serve(app, PortfolioEntry, {
-      plural: false
-    });
-    restify.serve(app, Settings, {
-      plural: false
-    });
 
     //express/mongo session storage
     app.use(express.session({
@@ -81,8 +79,18 @@ module.exports = function(app, passport, db) {
     app.use(passport.initialize());
     app.use(passport.session());
 
+
+    //express-restify-mongoose
+    restify.serve(app, PortfolioEntry, {
+      plural: false
+    });
+    restify.serve(app, Settings, {
+      plural: false
+    });
+
     //routes should be at the last
     app.use(app.router);
+    app.use(slash());
 
     //Assume "not found" in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
     app.use(function(err, req, res, next) {
