@@ -4,9 +4,10 @@ define([
     'marked',
     'backboneSyphon',
     'models/portfolioEntry',
-    'routers/router'
+    'routers/router',
+    'parsley'
   ],
-  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon, PortfolioEntry, Router) {
+  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon, PortfolioEntry, Router, parsley) {
     'use strict';
 
     /* Return a ItemView class definition */
@@ -27,13 +28,21 @@ define([
         "mouseenter .markdown-description-btn .fa": "initializeMarkdownInfo",
         "keyup .markdown-description :input": "markdownConverter",
         "click .publish-btns .publish": "publish",
-        "click .publish-btns .save-draft": "save"
+        "click .publish-btns .save-draft": "save",
+        "keyup .admin-input-title": "generateSlug"
       },
 
       publish: function(e) {
         console.log("publish function fired");
         e.preventDefault();
         var isDraft = false;
+
+        var isvalid = $('#portfolioEntry').parsley('isValid');
+
+        if (!isvalid) {
+          $('#portfolioEntry').parsley('validate');
+          return;
+        }
 
         this.saveToDB(isDraft);
       },
@@ -43,16 +52,21 @@ define([
         e.preventDefault();
         var isDraft = true;
 
+        // $('#portfolioEntry').parsley({
+        //   excluded: 'input[name="pageTitle"]'
+        // });
+
+        var isvalid = $('#portfolioEntry').parsley('isValid');
+
+        if (!isvalid) {
+          $('#portfolioEntry').parsley('validate');
+          return;
+        }
+
         this.saveToDB(isDraft);
       },
 
       saveToDB: function(draft) {
-
-        // if isdraft is true
-        // we need to grab save the model to the 
-        // database and then grab the model _id
-        // so that we can either save again or publish
-
         var data = Backbone.Syphon.serialize(this);
         data.bodyHtml = $('#pEntryBodyHtml').html();
         data.draft = draft;
@@ -68,8 +82,9 @@ define([
                 trigger: true
               });
             }
-
-            window.Router.navigate("/admin/portfolio");
+            else {
+              window.Router.navigate("/admin/portfolio");
+            }
           }
         });
       },
@@ -117,10 +132,15 @@ define([
         $('#pEntryBodyHtml').html(html);
       }, 100),
 
+      generateSlug: function() {
+        var slug = $('.admin-input-title').val();
+        var sanitizedSlug = slug.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g, '');
+        $('#slug').val(sanitizedSlug);
+      },
+
       /* on render callback */
       onRender: function() {
         this.markdownConverter();
-
       }
     });
 

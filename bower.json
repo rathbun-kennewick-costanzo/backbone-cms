@@ -18,7 +18,8 @@
     "sinon": "~1.7.3",
     "font-awesome": "~4.0.3",
     "marked": "~0.2.10",
-    "backbone.syphon": "~0.4.1"
+    "backbone.syphon": "~0.4.1",
+    "parsleyjs": "~1.2.2"
   },
   "devDependencies": {},
   "directory": "bower_components"
