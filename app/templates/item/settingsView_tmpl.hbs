@@ -1,8 +1,9 @@
 <div class="col-md-6 settings-right clearfix">
+  <form id="settingsEntry">
   <h1><i class="fa fa-cog"></i> General Settings</h1>
-  <input type="text" class="form-control admin-input input-lg" placeholder="Site Title">
-  <input type="text" class="form-control admin-input input-lg" placeholder="Site Description">
-  <input type="text" class="form-control admin-input input-lg" placeholder="Primary Email">
+  <input type="text" name="siteTitle" class="form-control admin-input input-lg" placeholder="Site Title" value="{{siteTitle}}" parsley-required="true">
+  <input type="text" name="description "class="form-control admin-input input-lg" placeholder="Site Description" value="{{description}}">
+  <input type="text" name="primaryEmail" class="form-control admin-input input-lg" placeholder="Primary Email" value="{{primaryEmail}}">
   <h2 class="settings-social-btns">
   <i class="fa fa-facebook-square" data-social="facebook"></i>
   <i class="fa fa-twitter-square" data-social="twitter"></i>
@@ -12,12 +13,13 @@
   <i class="fa fa-youtube-square" data-social="youtube"></i>
   </h2>
   <div class="settings-social-inputs">
-    <input type="text" class="form-control admin-input input-lg facebook" placeholder="Facebook">
-    <input type="text" class="form-control admin-input input-lg twitter" placeholder="Twitter">
-    <input type="text" class="form-control admin-input input-lg github" placeholder="Github">
-    <input type="text" class="form-control admin-input input-lg linkedin" placeholder="Linkedin">
-    <input type="text" class="form-control admin-input input-lg pinterest" placeholder="Pinterest">
-    <input type="text" class="form-control admin-input input-lg youtube" placeholder="YouTube">
+    <input type="text" name="facebook" class="form-control admin-input input-lg facebook" placeholder="Facebook" value="{{facebook}}">
+    <input type="text" name="twitter" class="form-control admin-input input-lg twitter" placeholder="Twitter" value="{{twitter}}">
+    <input type="text" name="github" class="form-control admin-input input-lg github" placeholder="Github" value="{{github}}">
+    <input type="text" name="linkedin" class="form-control admin-input input-lg linkedin" placeholder="Linkedin" value="{{linkedin}}">
+    <input type="text" name="pinterest" class="form-control admin-input input-lg pinterest" placeholder="Pinterest" value="{{pinterest}}">
+    <input type="text" name="youtube" class="form-control admin-input input-lg youtube" placeholder="YouTube" value="{{youtube}}">
   </div>
-  <a type="button" class="btn btn-success btn-lg settings-save"><i class="fa fa-floppy-o"></i> Save</a>
+  <a type="submit" class="btn btn-success btn-lg settings-save"><i class="fa fa-floppy-o"></i> Save</a>
+</form>
 </div>

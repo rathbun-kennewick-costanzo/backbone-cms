@@ -49,7 +49,7 @@ define([
         settingsModel.fetch({
           success: function() {
             var settingsView = new SettingsView({
-              model: userModel
+              model: settingsModel
             });
 
             that.settings.show(settingsView);
