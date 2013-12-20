@@ -7,3 +7,5 @@ app/lib
 .DS_Store
 server/config/*.json
 !server/config/defaults.json
+clientApp/node_modules
+clientApp/lib
