@@ -18,6 +18,13 @@ define([
         console.log("initialize a Controller");
       },
 
+      index: function() {
+        //funky logic to deal with client and admin side
+        if (window.location.pathname === "/") {
+          this.clientPortfolio();
+        }
+      },
+
       clientPortfolio: function() {
         console.log("BAM! landed on the client portfolio page.");
         var portfolioEntries = new PortfolioEntries();

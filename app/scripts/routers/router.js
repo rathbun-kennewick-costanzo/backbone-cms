@@ -13,7 +13,7 @@ define([
       },
       controller: Controller,
       appRoutes: {
-        "": "clientPortfolio",
+        "": "index",
         "admin/portfolio": "portfolio",
         "admin/portfolio/new": "portfolioNew",
         "admin/portfolio/edit/:id": "portfolioEdit",
