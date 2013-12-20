@@ -14,6 +14,7 @@ define([
       controller: Controller,
       appRoutes: {
         "": "clientPortfolio",
+        "portfolio/:id": "clientPortfolioEntry",
         "test": "test",
         "admin/portfolio": "portfolio",
         "admin/portfolio/new": "portfolioNew",

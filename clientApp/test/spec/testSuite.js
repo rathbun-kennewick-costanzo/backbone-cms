@@ -5,7 +5,8 @@ define(function() {
 	return {
 		specs: ['spec/exampleTest.js',
 		'spec/views/composite/clientOverallPortView.js',
-		'spec/views/item/clientPortItemView.js'
+		'spec/views/item/clientPortItemView.js',
+		'spec/views/item/clientPortfolioEntry.js'
 		]
 	};
 });
