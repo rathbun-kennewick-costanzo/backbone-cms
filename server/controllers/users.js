@@ -3,6 +3,7 @@
  */
 var mongoose = require('mongoose'),
   path = require('path'),
+  _ = require('underscore');
   User = mongoose.model('User');
 
 
@@ -44,6 +45,16 @@ exports.signout = function(req, res) {
 exports.session = function(req, res) {
   res.redirect('users/');
 };
+
+exports.getUser = function(req,res){
+  User
+    .findOne()
+    .exec(function(err, user) {
+      if (err) return next(err);
+      if (!user) return next(new Error('Failed to load User ' + id));
+      return res.json({'name': user.name, 'email' : user.email, 'google': user.google});
+    });
+}
 
 /**
  * Create user
