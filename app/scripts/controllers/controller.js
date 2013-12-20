@@ -36,12 +36,6 @@ define([
         });
       },
 
-      index: function() {
-        console.log("index controller function fired");
-        var loginview = new LoginView();
-        App.content.show(loginview);
-      },
-
       portfolio: function() {
         console.log("portfolio controller function fired");
         var portfolioEntries = new PortfolioEntries();
@@ -97,9 +91,7 @@ define([
         console.log("adminSettingsOverallView controller function fired");
         var adminSettingsOverallView = new AdminSettingsOverallView();
         App.content.show(adminSettingsOverallView);
-      },
-
-      test: function() {}
+      }
     });
 
     return new Controller();
