@@ -14,6 +14,7 @@ var PortfolioEntrySchema = new Schema({
   bodyExcerpt: String,
   pageTitle: String,
   metaDescription: String,
+  imageDataURI: String,
   slug: {
     type: String,
     lowercase: true,

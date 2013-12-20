@@ -29,7 +29,42 @@ define([
         "keyup .markdown-description :input": "markdownConverter",
         "click .publish-btns .publish": "publish",
         "click .publish-btns .save-draft": "save",
-        "keyup .admin-input-title": "generateSlug"
+        "keyup .admin-input-title": "generateSlug",
+        "change #fileUpload": "imageChange",
+        "click .remove-img-btn": "removeImage"
+      },
+
+      imageChange: function(e) {
+
+        // Abandon hope all ye who enter this section of code
+
+        var f = e.target.files;
+        var imageDataURI;
+
+        // check file[0].type.match('image.*')
+
+        var reader = new FileReader();
+
+        reader.onload = (function(theFile) {
+          return function(e) {
+            imageDataURI = e.target.result;
+            // Render thumbnail.
+            var span = document.createElement('span');
+            span.innerHTML = ['<img class="thumb" style="height: 101px; margin-top: 5px" src="', e.target.result,
+              '" title="', escape(theFile.name), '"/>'
+            ].join('');
+            document.getElementById('testList').insertBefore(span, null);
+            $("#imageDataURI").val(imageDataURI);
+          };
+        })(f);
+
+        reader.readAsDataURL(f[0]);
+      },
+
+      removeImage: function() {
+        $("#testList").empty();
+        $("#imageDataURI").empty();
+        $("#fileUpload").val("");
       },
 
       publish: function(e) {
@@ -68,10 +103,12 @@ define([
 
       saveToDB: function(draft) {
         var data = Backbone.Syphon.serialize(this);
+        data.imageDataURI = $('#imageDataURI').val();
         data.bodyHtml = $('#pEntryBodyHtml').html();
         data.draft = draft;
         data.date = new Date();
         data.bodyExcerpt = marked(data.bodyMarkdown.slice(0, 100));
+        console.log(data);
 
         this.model.set(data);
         var that = this;
