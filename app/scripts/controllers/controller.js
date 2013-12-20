@@ -19,6 +19,13 @@ define([
         console.log("initialize a Controller");
       },
 
+      index: function() {
+        //funky logic to deal with client and admin side
+        if (window.location.pathname === "/") {
+          this.clientPortfolio();
+        }
+      },
+
       clientPortfolio: function() {
         console.log("BAM! landed on the client portfolio page.");
         var portfolioEntries = new PortfolioEntries();
@@ -55,12 +62,6 @@ define([
             console.log(error);
           }
         });
-      },
-
-      index: function() {
-        console.log("index controller function fired");
-        var loginview = new LoginView();
-        App.content.show(loginview);
       },
 
       portfolio: function() {
@@ -118,9 +119,7 @@ define([
         console.log("adminSettingsOverallView controller function fired");
         var adminSettingsOverallView = new AdminSettingsOverallView();
         App.content.show(adminSettingsOverallView);
-      },
-
-      test: function() {}
+      }
     });
 
     return new Controller();
