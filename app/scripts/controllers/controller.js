@@ -5,10 +5,12 @@ define([
     'views/item/adminPortEntryView',
     'views/layout/adminSettingsOverallView',
     'models/portfolioEntry',
-    'collections/portfolioEntries'
+    'collections/portfolioEntries',
+    'views/composite/clientOverallPortView',
+    'views/item/clientPortfolioEntry'
 
   ],
-  function(Backbone, Marionette, AdminPortOverallView, AdminPortEntryView, AdminSettingsOverallView, PortfolioEntryModel, PortfolioEntries) {
+  function(Backbone, Marionette, AdminPortOverallView, AdminPortEntryView, AdminSettingsOverallView, PortfolioEntryModel, PortfolioEntries, ClientOverallPortView, ClientPortfolioEntry) {
     'use strict';
 
     var Controller = Backbone.Marionette.Controller.extend({
@@ -18,9 +20,48 @@ define([
       },
 
       index: function() {
-        console.log("index controller function fired");
-        var loginview = new LoginView();
-        App.content.show(loginview);
+        //funky logic to deal with client and admin side
+        if (window.location.pathname === "/") {
+          this.clientPortfolio();
+        }
+      },
+
+      clientPortfolio: function() {
+        console.log("BAM! landed on the client portfolio page.");
+        var portfolioEntries = new PortfolioEntries();
+        portfolioEntries.fetch({
+          success: function() {
+            console.log("successful fetch");
+            var clientPortOverallView = new ClientOverallPortView({
+              collection: portfolioEntries
+            });
+            App.content.show(clientPortOverallView);
+          },
+
+          error: function(error) {
+            console.log(error);
+          }
+        });
+      },
+
+      clientPortfolioEntry: function(id) {
+        console.log("BAM! portfolio entry hit!");
+        var portfolioEntry = new PortfolioEntryModel({
+          _id: id
+        });
+        portfolioEntry.fetch({
+          success: function() {
+            console.log("successful fetch");
+            var clientPortfolioEntry = new ClientPortfolioEntry({
+              model: portfolioEntry
+            });
+            App.content.show(clientPortfolioEntry);
+          },
+
+          error: function(error) {
+            console.log(error);
+          }
+        });
       },
 
       portfolio: function() {
@@ -78,9 +119,7 @@ define([
         console.log("adminSettingsOverallView controller function fired");
         var adminSettingsOverallView = new AdminSettingsOverallView();
         App.content.show(adminSettingsOverallView);
-      },
-
-      test: function() {}
+      }
     });
 
     return new Controller();

@@ -104,8 +104,8 @@ module.exports = function(grunt) {
 
     // open app and test page
     open: {
-      admin: {
-        path: 'http://localhost:<%= express.options.port %>/admin'
+      users: {
+        path: 'http://localhost:<%= express.options.port %>/users'
       },
       pub: {
         path: 'http://localhost:<%= express.options.port %>'
@@ -307,11 +307,11 @@ module.exports = function(grunt) {
     'default'
   ]);
 
-  grunt.registerTask('admin', function() {
+  grunt.registerTask('users', function() {
     grunt.option('force', true);
     grunt.task.run([
       'preOpen',
-      'open:admin',
+      'open:users',
       'watch'
     ]);
   });

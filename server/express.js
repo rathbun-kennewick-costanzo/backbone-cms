@@ -34,6 +34,7 @@ module.exports = function(app, passport, db, auth) {
   //Setting the fav icon and static folder
   app.use(express.static(path.join(__dirname, '../app')));
   app.use(express.static(path.join(__dirname, '../.tmp')));
+  app.use(express.static(path.join(__dirname, '../clientApp')));
 
   // simple log
   app.use(function(req, res, next) {
