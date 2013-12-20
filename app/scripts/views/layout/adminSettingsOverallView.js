@@ -1,22 +1,29 @@
 define([
     'backbone',
+    'models/user',
+    'views/item/userView',
+    'models/settings',
+    'views/item/settingsView',
     'hbs!tmpl/layout/adminSettingsOverallView_tmpl'
   ],
-  function(Backbone, AdminsettingsoverallviewTmpl) {
+  function(Backbone, UserModel, UserView, SettingsModel, SettingsView, AdminsettingsoverallviewTmpl) {
     'use strict';
 
     /* Return a Layout class definition */
     return Backbone.Marionette.Layout.extend({
 
       initialize: function() {
-        console.log("initialize a Adminsettingsoverallview Layout");
+
       },
 
       template: AdminsettingsoverallviewTmpl,
 
 
       /* Layout sub regions */
-      regions: {},
+      regions: {
+        users: "#users",
+        settings: "#settings"
+      },
 
       /* ui selector cache */
       ui: {},
@@ -25,7 +32,30 @@ define([
       events: {},
 
       /* on render callback */
-      onRender: function() {}
+      onRender: function() {
+        var that = this;
+        console.log(this);
+        console.log("initialize a Adminsettingsoverallview Layout");
+        var userModel = new UserModel();
+        userModel.fetch({
+          success: function() {
+            var userView = new UserView({
+              model: userModel
+            });
+            that.users.show(userView);
+          }
+        });
+        var settingsModel = new SettingsModel();
+        settingsModel.fetch({
+          success: function() {
+            var settingsView = new SettingsView({
+              model: userModel
+            });
+
+            that.settings.show(settingsView);
+          }
+        });
+      }
     });
 
   });
