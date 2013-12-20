@@ -2,14 +2,8 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var SettingsSchema = new Schema({
-  siteTitle: {
-    type: String,
-    required: true
-  },
-  primaryEmail: {
-    type: String,
-    required: true
-  },
+  siteTitle: String,
+  primaryEmail: String,
   description: String,
   facebook: String,
   github: String,

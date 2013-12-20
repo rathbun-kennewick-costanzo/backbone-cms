@@ -38,7 +38,8 @@ define([
         console.log("initialize a Adminsettingsoverallview Layout");
         var userModel = new UserModel();
         userModel.fetch({
-          success: function() {
+          success: function(model) {
+            console.log(model);
             var userView = new UserView({
               model: userModel
             });
@@ -47,9 +48,10 @@ define([
         });
         var settingsModel = new SettingsModel();
         settingsModel.fetch({
-          success: function() {
+          success: function(model) {
+            console.log(model);
             var settingsView = new SettingsView({
-              model: userModel
+              model: settingsModel
             });
 
             that.settings.show(settingsView);
