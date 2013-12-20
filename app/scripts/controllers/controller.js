@@ -118,7 +118,7 @@ define([
       settings: function() {
         console.log("adminSettingsOverallView controller function fired");
         var adminSettingsOverallView = new AdminSettingsOverallView();
-        App.content.show(adminSettingsOverallView);
+      App.content.show(adminSettingsOverallView);
       }
     });
 
