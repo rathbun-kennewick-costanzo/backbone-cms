@@ -31,7 +31,8 @@ define([
         "click .publish-btns .save-draft": "save",
         "keyup .admin-input-title": "generateSlug",
         "change #fileUpload": "imageChange",
-        "click .remove-img-btn": "removeImage"
+        "click .remove-img-btn": "removeImage",
+        "click #uploadIcon": "triggerUploadClick"
       },
 
       imageChange: function(e) {
@@ -51,20 +52,28 @@ define([
             // Render thumbnail.
             var span = document.createElement('span');
             span.innerHTML = ['<img class="thumb" style="height: 101px; margin-top: 5px" src="', e.target.result,
-              '" title="', escape(theFile.name), '"/>'
+              '" title="', escape(theFile[0].name), '"/>'
             ].join('');
             document.getElementById('testList').insertBefore(span, null);
             $("#imageDataURI").val(imageDataURI);
+            $("#fakeUpload").val(theFile[0].name);
           };
         })(f);
 
         reader.readAsDataURL(f[0]);
+
+      },
+
+      triggerUploadClick: function(e) {
+        e.preventDefault();
+        $("#fileUpload").click();
       },
 
       removeImage: function() {
         $("#testList").empty();
         $("#imageDataURI").empty();
         $("#fileUpload").val("");
+        $("#fakeUpload").val("Click to Upload");
       },
 
       publish: function(e) {
