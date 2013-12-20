@@ -1,6 +1,6 @@
 <form id="portfolioEntry">
   <div class="col-md-12">
-    <input type="text" class="form-control admin-input-title" name="title" placeholder="Title" value="{{title}}">
+    <input type="text" class="form-control admin-input-title" name="title" placeholder="Title" value="{{title}}"parsley-required="true">
   </div>
   <div class="col-md-6 markdown-description">
     <textarea id="pEntryBodyMark" class="form-control admin-textarea markdown-description" rows="15" placeholder="Project Description" name="bodyMarkdown">{{bodyMarkdown}}</textarea>
@@ -14,7 +14,7 @@
     <h2>Portfolio Images</h2>
     <div class="file-upload">
       <div class="col-md-6 remove-left-padding">
-        <input type="text" class="form-control admin-input input-lg" placeholder="Main Image Location">
+        <input id="fileUpload" type="file" class="form-control admin-input input-lg" placeholder="Main Image Location">
         <a href="#"><i class="fa fa-cloud-upload file-upload-icon"></i></a>
       </div>
       <div class="col-md-6">
@@ -24,19 +24,21 @@
     <!-- upload more images populate here -->
     <div class="new-image-upload"></div>
     <div class="col-md-12 remove-left-padding">
-      <a type="button" class="btn btn-success add-img-btn">Add another image <i class="fa fa-plus-circle"></i></a>
+      {{!-- <a type="button" class="btn btn-success add-img-btn">Add another image <i class="fa fa-plus-circle"></i></a> --}}
       <a type="button" class="btn btn-danger remove-img-btn">Remove image <i class="fa fa-minus-circle"></i></a>
     </div>
+    <div id="testList"></div>
+    <input id="imageDataURI" style="margin-left: -9999px" type="text" placeholder="this should have the data URI" name="imageDataURI">
   </div>
   <div class="col-md-6">
     <h2>Meta Data</h2>
     <input type="text" class="form-control admin-input input-lg" name="pageTitle" placeholder="Page Title" value="{{pageTitle}}">
     <input type="text" class="form-control admin-input input-lg" name="metaDescription" placeholder="Meta Description" value="{{metaDescription}}">
-    <input type="text" class="form-control admin-input input-lg" name="slug" placeholder="Url Path" value="{{slug}}">
+    <input type="text" id="slug" class="form-control admin-input input-lg" name="slug" placeholder="Url Path" value="{{slug}}">
     <input type="text" class="form-control admin-input input-lg" name="sortTags" placeholder="Tags" data-role="tagsinput" value="{{sortTags}}">
   </div>
   <div class="col-md-12 btn-group publish-btns">
-    <a type="button" class="btn btn-primary btn-lg save-draft"><i class="fa fa-floppy-o"></i> Save Draft</a>
+    <a type="submit" class="btn btn-primary btn-lg save-draft"><i class="fa fa-floppy-o"></i> Save Draft</a>
     <a type="submit" class="btn btn-success btn-lg publish"><i class="fa fa-arrow-up"></i> Publish</a>
   </div>
 </form>

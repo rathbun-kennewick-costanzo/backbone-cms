@@ -5,16 +5,35 @@ define([
     'views/item/adminPortEntryView',
     'views/layout/adminSettingsOverallView',
     'models/portfolioEntry',
-    'collections/portfolioEntries'
+    'collections/portfolioEntries',
+    'views/composite/clientOverallPortView'
 
   ],
-  function(Backbone, Marionette, AdminPortOverallView, AdminPortEntryView, AdminSettingsOverallView, PortfolioEntryModel, PortfolioEntries) {
+  function(Backbone, Marionette, AdminPortOverallView, AdminPortEntryView, AdminSettingsOverallView, PortfolioEntryModel, PortfolioEntries, ClientOverallPortView) {
     'use strict';
 
     var Controller = Backbone.Marionette.Controller.extend({
 
       initialize: function() {
         console.log("initialize a Controller");
+      },
+
+      clientPortfolio: function() {
+        console.log("BAM! landed on the client portfolio page.");
+        var portfolioEntries = new PortfolioEntries();
+        portfolioEntries.fetch({
+          success: function() {
+            console.log("successful fetch");
+            var clientPortOverallView = new ClientOverallPortView({
+              collection: portfolioEntries
+            });
+            App.content.show(clientPortOverallView);
+          },
+
+          error: function(error) {
+            console.log(error);
+          }
+        });
       },
 
       index: function() {

@@ -9,26 +9,12 @@ var PortfolioEntrySchema = new Schema({
     type: String,
     required: true
   },
-  bodyMarkdown: {
-    type: String,
-    required: true
-  },
-  bodyHtml: {
-    type: String,
-    required: true
-  },
-  bodyExcerpt: {
-    type: String,
-    required: true
-  },
-  pageTitle: {
-    type: String,
-    required: true
-  },
-  metaDescription: {
-    type: String,
-    required: true
-  },
+  bodyMarkdown: String,
+  bodyHtml: String,
+  bodyExcerpt: String,
+  pageTitle: String,
+  metaDescription: String,
+  imageDataURI: String,
   slug: {
     type: String,
     lowercase: true,

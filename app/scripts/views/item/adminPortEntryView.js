@@ -4,9 +4,10 @@ define([
     'marked',
     'backboneSyphon',
     'models/portfolioEntry',
-    'routers/router'
+    'routers/router',
+    'parsley'
   ],
-  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon, PortfolioEntry, Router) {
+  function(Backbone, AdminportentryviewTmpl, marked, backboneSyphon, PortfolioEntry, Router, parsley) {
     'use strict';
 
     /* Return a ItemView class definition */
@@ -27,13 +28,56 @@ define([
         "mouseenter .markdown-description-btn .fa": "initializeMarkdownInfo",
         "keyup .markdown-description :input": "markdownConverter",
         "click .publish-btns .publish": "publish",
-        "click .publish-btns .save-draft": "save"
+        "click .publish-btns .save-draft": "save",
+        "keyup .admin-input-title": "generateSlug",
+        "change #fileUpload": "imageChange",
+        "click .remove-img-btn": "removeImage"
+      },
+
+      imageChange: function(e) {
+
+        // Abandon hope all ye who enter this section of code
+
+        var f = e.target.files;
+        var imageDataURI;
+
+        // check file[0].type.match('image.*')
+
+        var reader = new FileReader();
+
+        reader.onload = (function(theFile) {
+          return function(e) {
+            imageDataURI = e.target.result;
+            // Render thumbnail.
+            var span = document.createElement('span');
+            span.innerHTML = ['<img class="thumb" style="height: 101px; margin-top: 5px" src="', e.target.result,
+              '" title="', escape(theFile.name), '"/>'
+            ].join('');
+            document.getElementById('testList').insertBefore(span, null);
+            $("#imageDataURI").val(imageDataURI);
+          };
+        })(f);
+
+        reader.readAsDataURL(f[0]);
+      },
+
+      removeImage: function() {
+        $("#testList").empty();
+        $("#imageDataURI").empty();
+        $("#fileUpload").val("");
       },
 
       publish: function(e) {
         console.log("publish function fired");
         e.preventDefault();
         var isDraft = false;
+
+        var isvalid = $('#portfolioEntry').parsley('isValid');
+
+        if (!isvalid) {
+          $('#portfolioEntry').parsley('validate');
+          return;
+        }
 
         this.saveToDB(isDraft);
       },
@@ -43,21 +87,28 @@ define([
         e.preventDefault();
         var isDraft = true;
 
+        // $('#portfolioEntry').parsley({
+        //   excluded: 'input[name="pageTitle"]'
+        // });
+
+        var isvalid = $('#portfolioEntry').parsley('isValid');
+
+        if (!isvalid) {
+          $('#portfolioEntry').parsley('validate');
+          return;
+        }
+
         this.saveToDB(isDraft);
       },
 
       saveToDB: function(draft) {
-
-        // if isdraft is true
-        // we need to grab save the model to the 
-        // database and then grab the model _id
-        // so that we can either save again or publish
-
         var data = Backbone.Syphon.serialize(this);
+        data.imageDataURI = $('#imageDataURI').val();
         data.bodyHtml = $('#pEntryBodyHtml').html();
         data.draft = draft;
         data.date = new Date();
         data.bodyExcerpt = marked(data.bodyMarkdown.slice(0, 100));
+        console.log(data);
 
         this.model.set(data);
         var that = this;
@@ -120,10 +171,15 @@ define([
         $('#pEntryBodyHtml').html(html);
       }, 100),
 
+      generateSlug: function() {
+        var slug = $('.admin-input-title').val();
+        var sanitizedSlug = slug.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g, '');
+        $('#slug').val(sanitizedSlug);
+      },
+
       /* on render callback */
       onRender: function() {
         this.markdownConverter();
-
       }
     });
 
