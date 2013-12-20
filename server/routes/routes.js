@@ -18,6 +18,8 @@ module.exports = function(app, passport, auth) {
   //app.get('/users/me', users.me);
   //app.get('/users/:userId', users.show);
 
+  app.get('/api/v1/users', users.getUser);
+
   //Setting the google oauth routes
   app.get('/auth/google', passport.authenticate('google', {
     failureRedirect: '/users/signin',
