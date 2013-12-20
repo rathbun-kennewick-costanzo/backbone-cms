@@ -31,12 +31,13 @@ define([
         "click .publish-btns .save-draft": "save",
         "keyup .admin-input-title": "generateSlug",
         "change #fileUpload": "imageChange",
-        "click .remove-img-btn": "removeImage"
+        "click .remove-img-btn": "removeImage",
+        "click #uploadIcon": "triggerUploadClick"
       },
 
       imageChange: function(e) {
 
-        // Abandon hope all ye who enter this section of code
+        // Abandon hope all ye who enter this section of code ---
 
         var f = e.target.files;
         var imageDataURI;
@@ -50,22 +51,50 @@ define([
             imageDataURI = e.target.result;
             // Render thumbnail.
             var span = document.createElement('span');
-            span.innerHTML = ['<img class="thumb" style="height: 101px; margin-top: 5px" src="', e.target.result,
-              '" title="', escape(theFile.name), '"/>'
+            span.innerHTML = ['<img class="thumb" src="', e.target.result,
+              '" title="', escape(theFile[0].name), '"/>'
             ].join('');
-            document.getElementById('testList').insertBefore(span, null);
+            $('#thumbnailBox').append(span);
             $("#imageDataURI").val(imageDataURI);
+            $("#fakeUpload").val(theFile[0].name);
           };
         })(f);
 
         reader.readAsDataURL(f[0]);
+
+      },
+
+      checkForImage: function() {
+        console.log("checking for image");
+        var imageCheck = this.model.toJSON().imageDataURI;
+
+        if (imageCheck) {
+          console.log("there is an image");
+
+          this.$("#fakeUpload").val("Click to Replace");
+
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', imageCheck,
+            '" title="Portfolio Image"/>'
+          ].join('');
+          this.$('#thumbnailBox').append(span);
+        }
+
+      },
+
+      triggerUploadClick: function(e) {
+        e.preventDefault();
+        $("#fileUpload").click();
       },
 
       removeImage: function() {
-        $("#testList").empty();
+        $("#thumbnailBox").empty();
         $("#imageDataURI").empty();
         $("#fileUpload").val("");
+        $("#fakeUpload").val("Click to Upload");
       },
+
+      // --- Hope can be marginally restored at this point
 
       publish: function(e) {
         console.log("publish function fired");
@@ -180,6 +209,7 @@ define([
       /* on render callback */
       onRender: function() {
         this.markdownConverter();
+        this.checkForImage();
       }
     });
 
