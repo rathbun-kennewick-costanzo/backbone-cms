@@ -26,7 +26,8 @@ define([
         sortTags: [],
         date: "",
         sortingId: "",
-        draft: true
+        draft: true,
+        imageDataURI: ""
       },
 
     });
